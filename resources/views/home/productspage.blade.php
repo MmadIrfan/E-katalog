@@ -1,6 +1,6 @@
-@include('template.header')
-
-<body>
+@extends('template.userpage')
+@section('title', 'Products')
+@section('content')
     <!-- Start Hero Section -->
     <div class="hero">
         <div class="container">
@@ -25,120 +25,22 @@
             <div class="row">
 
                 <!-- Start Column 1 -->
-                <div class="col-12 col-md-4 col-lg-3 mb-5">
-                    <a class="product-item" href="#">
-                        <img src="home/images/product-3.png" class="img-fluid product-thumbnail">
-                        <h3 class="product-title">Nordic Chair</h3>
-                        <strong class="product-price">PRODUCT DETAILS</strong>
+                @foreach ($products as $product)
+                    <div class="col-12 col-md-4 col-lg-3 mb-5">
+                        <a class="product-item" href="#">
+                            <img src="{{ asset('storage/products/' . $product->foto) }}" class="img-fluid product-thumbnail"
+                                style="object-fit: cover; width: 100%; height: 200px;">
+                            <h3 class="product-title">{{ $product->nama }}</h3>
+                            <strong class="product-price">PRODUCT DETAILS</strong>
 
-                        <span class="icon-cross">
-                            <img src="home/images/cross.svg" class="img-fluid">
-                        </span>
-                    </a>
-                </div>
+                            <span class="icon-cross">
+                                <img src="home/images/cross.svg" class="img-fluid">
+                            </span>
+                        </a>
+                    </div>
+                @endforeach
                 <!-- End Column 1 -->
-
-                <!-- Start Column 2 -->
-                <div class="col-12 col-md-4 col-lg-3 mb-5">
-                    <a class="product-item" href="#">
-                        <img src="home/images/product-1.png" class="img-fluid product-thumbnail">
-                        <h3 class="product-title">Nordic Chair</h3>
-                        <strong class="product-price">PRODUCT DETAILS</strong>
-
-                        <span class="icon-cross">
-                            <img src="home/images/cross.svg" class="img-fluid">
-                        </span>
-                    </a>
-                </div>
-                <!-- End Column 2 -->
-
-                <!-- Start Column 3 -->
-                <div class="col-12 col-md-4 col-lg-3 mb-5">
-                    <a class="product-item" href="#">
-                        <img src="home/images/product-2.png" class="img-fluid product-thumbnail">
-                        <h3 class="product-title">Kruzo Aero Chair</h3>
-                        <strong class="product-price">PRODUCT DETAILS</strong>
-
-                        <span class="icon-cross">
-                            <img src="home/images/cross.svg" class="img-fluid">
-                        </span>
-                    </a>
-                </div>
-                <!-- End Column 3 -->
-
-                <!-- Start Column 4 -->
-                <div class="col-12 col-md-4 col-lg-3 mb-5">
-                    <a class="product-item" href="#">
-                        <img src="home/images/product-3.png" class="img-fluid product-thumbnail">
-                        <h3 class="product-title">Ergonomic Chair</h3>
-                        <strong class="product-price">PRODUCT DETAILS</strong>
-
-                        <span class="icon-cross">
-                            <img src="home/images/cross.svg" class="img-fluid">
-                        </span>
-                    </a>
-                </div>
-                <!-- End Column 4 -->
-
-
-                <!-- Start Column 1 -->
-                <div class="col-12 col-md-4 col-lg-3 mb-5">
-                    <a class="product-item" href="#">
-                        <img src="home/images/product-3.png" class="img-fluid product-thumbnail">
-                        <h3 class="product-title">Nordic Chair</h3>
-                        <strong class="product-price">PRODUCT DETAILS</strong>
-
-                        <span class="icon-cross">
-                            <img src="home/images/cross.svg" class="img-fluid">
-                        </span>
-                    </a>
-                </div>
-                <!-- End Column 1 -->
-
-                <!-- Start Column 2 -->
-                <div class="col-12 col-md-4 col-lg-3 mb-5">
-                    <a class="product-item" href="#">
-                        <img src="home/images/product-1.png" class="img-fluid product-thumbnail">
-                        <h3 class="product-title">Nordic Chair</h3>
-                        <strong class="product-price">PRODUCT DETAILS</strong>
-
-                        <span class="icon-cross">
-                            <img src="home/images/cross.svg" class="img-fluid">
-                        </span>
-                    </a>
-                </div>
-                <!-- End Column 2 -->
-
-                <!-- Start Column 3 -->
-                <div class="col-12 col-md-4 col-lg-3 mb-5">
-                    <a class="product-item" href="#">
-                        <img src="home/images/product-2.png" class="img-fluid product-thumbnail">
-                        <h3 class="product-title">Kruzo Aero Chair</h3>
-                        <strong class="product-price">PRODUCT DETAILS</strong>
-
-                        <span class="icon-cross">
-                            <img src="home/images/cross.svg" class="img-fluid">
-                        </span>
-                    </a>
-                </div>
-                <!-- End Column 3 -->
-
-                <!-- Start Column 4 -->
-                <div class="col-12 col-md-4 col-lg-3 mb-5">
-                    <a class="product-item" href="#">
-                        <img src="home/images/product-3.png" class="img-fluid product-thumbnail">
-                        <h3 class="product-title">Ergonomic Chair</h3>
-                        <strong class="product-price">PRODUCT DETAILS</strong>
-
-                        <span class="icon-cross">
-                            <img src="home/images/cross.svg" class="img-fluid">
-                        </span>
-                    </a>
-                </div>
-                <!-- End Column 4 -->
-
             </div>
         </div>
     </div>
-</body>
-@include('template.footer')
+@endsection

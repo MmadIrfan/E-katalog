@@ -892,3 +892,56 @@ textarea {
     border-radius: 50%;
     background: rgba(59, 93, 80, 0.2);
 }
+/* Style untuk Pop-up Contact Form */
+#contact-box {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    width: 300px;
+    max-height: 400px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+#contact-box header {
+    background: #007bff;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+}
+#contact-box .form {
+    padding: 10px;
+}
+#contact-box .form .input-box {
+    margin-bottom: 10px;
+}
+#contact-box .form .input-box input,
+#contact-box .form .input-box textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+#contact-box .form .input-box textarea {
+    resize: vertical;
+}
+#contact-box .form .submit-box {
+    text-align: right;
+}
+#contact-box .form .submit-box button {
+    padding: 10px;
+    border: none;
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+}
+#contact-toggle {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    padding: 10px 15px;
+    cursor: pointer;
+    border: none;
+    border-radius: 20px;
+}

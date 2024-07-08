@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Home;
+use App\Models\Products;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -12,7 +13,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view("home.home");
+        $products = Products::all();
+        return view("home.home", ['products' => $products]);
+    }
+
+    public function produk()
+    {
+        $products = Products::all();
+        return view("home.productspage", ['products' => $products]);
     }
 
     /**
