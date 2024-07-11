@@ -16,8 +16,9 @@
                             Natural and high-quality raw materials.
                         </p>
                         <p>
-                            <a href="" class="btn btn-secondary me-2">Shop Now</a><a href="#"
-                                class="btn btn-white-outline">Explore</a>
+                            <a href="mailto:marketing@aestheticrattan.com?subject=Inquiry%20about%20Rattan%20Furniture&body=Hello,%0D%0AI%20am%20interested%20in%20learning%20more%20about%20your%20rattan%20furniture.%0D%0AThank%20you!"
+                                class="btn btn-secondary me-2">Shop Now</a>
+                            <a href="#product-section" class="btn btn-white-outline">Explore</a>
                         </p>
                     </div>
                 </div>
@@ -32,7 +33,7 @@
     <!-- End Hero Section -->
 
     <!-- Start Product Section -->
-    <div class="product-section">
+    <div id="product-section" class="product-section">
         <div class="container">
             <div class="row">
                 <!-- Start Column 1 -->
@@ -44,51 +45,25 @@
                         We are committed to crafting functional and aesthetically pleasing furniture pieces that inspire
                         comfort, creativity, and joy in everyday living.
                     </p>
-                    <p><a href="shop.html" class="btn">Explore</a></p>
+                    <p><a href="/products" class="btn">Explore</a></p>
                 </div>
                 <!-- End Column 1 -->
 
                 <!-- Start Column 2 -->
-                <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-                    <a class="product-item" href="cart.html">
-                        <img src="images/OWL_0107-removebg-preview.png" class="img-fluid product-thumbnail" />
-                        <h3 class="product-title">Nordic Chair</h3>
-                        <strong class="product-price">$50.00</strong>
+                @foreach ($products as $product)
+                    <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+                        <a class="product-item" href="cart.html">
+                            <img src="{{ asset('storage/products/' . $product->foto) }}" class="img-fluid product-thumbnail"
+                                style="object-fit: cover; width: 100%; height: 200px;" />
+                            <h3 class="product-title">{{ $product->nama }}</h3>
+                            <strong class="product-price">Details</strong>
 
-                        <span class="icon-cross">
-                            <img src="home/images/cross.svg" class="img-fluid" />
-                        </span>
-                    </a>
-                </div>
-                <!-- End Column 2 -->
-
-                <!-- Start Column 3 -->
-                <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-                    <a class="product-item" href="cart.html">
-                        <img src="images/OWL_0174-removebg-preview.png" class="img-fluid product-thumbnail" />
-                        <h3 class="product-title">Kruzo Aero Chair</h3>
-                        <strong class="product-price">$78.00</strong>
-
-                        <span class="icon-cross">
-                            <img src="home/images/cross.svg" class="img-fluid" />
-                        </span>
-                    </a>
-                </div>
-                <!-- End Column 3 -->
-
-                <!-- Start Column 4 -->
-                <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-                    <a class="product-item" href="cart.html">
-                        <img src="images/OWL_0211-removebg-preview.png" class="img-fluid product-thumbnail" />
-                        <h3 class="product-title">Ergonomic Chair</h3>
-                        <strong class="product-price">$43.00</strong>
-
-                        <span class="icon-cross">
-                            <img src="home/images/cross.svg" class="img-fluid" />
-                        </span>
-                    </a>
-                </div>
-                <!-- End Column 4 -->
+                            <span class="icon-cross">
+                                <img src="home/images/cross.svg" class="img-fluid" />
+                            </span>
+                        </a>
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -101,9 +76,8 @@
                 <div class="col-lg-6">
                     <h2 class="section-title">Why Choose Us</h2>
                     <p>
-                        Donec vitae odio quis nisl dapibus malesuada. Nullam
-                        ac aliquet velit. Aliquam vulputate velit imperdiet
-                        dolor tempor tristique.
+                        At our company, we are dedicated to providing top-notch services and ensuring customer satisfaction.
+                        Our commitment to excellence sets us apart in the industry.
                     </p>
 
                     <div class="row my-5">
@@ -112,11 +86,10 @@
                                 <div class="icon">
                                     <img src="home/images/truck.svg" alt="Image" class="imf-fluid" />
                                 </div>
-                                <h3>Fast &amp; Free Shipping</h3>
+                                <h3>Responsibility</h3>
                                 <p>
-                                    Donec vitae odio quis nisl dapibus
-                                    malesuada. Nullam ac aliquet velit.
-                                    Aliquam vulputate.
+                                    We take our responsibilities seriously, ensuring every project is completed with
+                                    meticulous care and attention to detail.
                                 </p>
                             </div>
                         </div>
@@ -126,11 +99,10 @@
                                 <div class="icon">
                                     <img src="home/images/bag.svg" alt="Image" class="imf-fluid" />
                                 </div>
-                                <h3>Easy to Shop</h3>
+                                <h3>Professional</h3>
                                 <p>
-                                    Donec vitae odio quis nisl dapibus
-                                    malesuada. Nullam ac aliquet velit.
-                                    Aliquam vulputate.
+                                    Our team of professionals is well-trained and experienced, bringing extensive knowledge
+                                    and expertise to every project.
                                 </p>
                             </div>
                         </div>
@@ -140,11 +112,10 @@
                                 <div class="icon">
                                     <img src="home/images/support.svg" alt="Image" class="imf-fluid" />
                                 </div>
-                                <h3>24/7 Support</h3>
+                                <h3>Commitment</h3>
                                 <p>
-                                    Donec vitae odio quis nisl dapibus
-                                    malesuada. Nullam ac aliquet velit.
-                                    Aliquam vulputate.
+                                    We are committed to delivering superior services and solutions tailored to our clients'
+                                    unique needs.
                                 </p>
                             </div>
                         </div>
@@ -154,11 +125,10 @@
                                 <div class="icon">
                                     <img src="home/images/return.svg" alt="Image" class="imf-fluid" />
                                 </div>
-                                <h3>Hassle Free Returns</h3>
+                                <h3>Experienced</h3>
                                 <p>
-                                    Donec vitae odio quis nisl dapibus
-                                    malesuada. Nullam ac aliquet velit.
-                                    Aliquam vulputate.
+                                    With many years in the industry, our team possesses the skills and expertise to tackle
+                                    any challenge.
                                 </p>
                             </div>
                         </div>
@@ -194,28 +164,26 @@
                 </div>
                 <div class="col-lg-5 ps-lg-5">
                     <h2 class="section-title mb-4">
-                        We Help You Make Modern Interior Design
+                        We Help You Make Modern Furniture Design
                     </h2>
                     <p>
-                        Donec facilisis quam ut purus rutrum lobortis. Donec
-                        vitae odio quis nisl dapibus malesuada. Nullam ac
-                        aliquet velit. Aliquam vulputate velit imperdiet
-                        dolor tempor tristique. Pellentesque habitant morbi
-                        tristique senectus et netus et malesuada
+                        We specialize in bringing your dreams to life with unique and personalized furniture designs. From
+                        concept to realization, we're committed to delivering every detail you envision. Trust us to create
+                        furniture that not only functions flawlessly but also reflects your style and needs perfectly
                     </p>
 
                     <ul class="list-unstyled custom-list my-4">
                         <li>
-                            Donec vitae odio quis nisl dapibus malesuada
+                            We listen attentively to understand your vision and preferences.
                         </li>
                         <li>
-                            Donec vitae odio quis nisl dapibus malesuada
+                            We offer tailored designs that complement your space and lifestyle.
                         </li>
                         <li>
-                            Donec vitae odio quis nisl dapibus malesuada
+                            Each piece is crafted with high-quality materials and meticulous attention to detail.
                         </li>
                         <li>
-                            Donec vitae odio quis nisl dapibus malesuada
+                            Every creation is distinctive, reflecting your personality and aesthetic taste.
                         </li>
                     </ul>
                     <p><a herf="#" class="btn">Explore</a></p>
@@ -232,7 +200,7 @@
                 <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
                     <div class="product-item-sm d-flex">
                         <div class="thumbnail">
-                            <img src="images/product-1.png" alt="Image" class="img-fluid" />
+                            <img src="images/OWL_0107-removebg-preview.png" alt="Image" class="img-fluid" />
                         </div>
                         <div class="pt-3">
                             <h3>Nordic Chair</h3>
@@ -248,7 +216,7 @@
                 <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
                     <div class="product-item-sm d-flex">
                         <div class="thumbnail">
-                            <img src="images/product-2.png" alt="Image" class="img-fluid" />
+                            <img src="images/OWL_0174-removebg-preview.png" alt="Image" class="img-fluid" />
                         </div>
                         <div class="pt-3">
                             <h3>Kruzo Aero Chair</h3>
@@ -264,7 +232,7 @@
                 <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
                     <div class="product-item-sm d-flex">
                         <div class="thumbnail">
-                            <img src="images/product-3.png" alt="Image" class="img-fluid" />
+                            <img src="images/OWL_0211-removebg-preview.png" alt="Image" class="img-fluid" />
                         </div>
                         <div class="pt-3">
                             <h3>Ergonomic Chair</h3>
@@ -325,7 +293,8 @@
 
                                             <div class="author-info">
                                                 <div class="author-pic">
-                                                    <img src="images/person-1.png" alt="Maria Jones" class="img-fluid" />
+                                                    <img src="home/images/person-1.png" alt="Maria Jones"
+                                                        class="img-fluid" />
                                                 </div>
                                                 <h3 class="font-weight-bold">
                                                     Maria Jones
@@ -365,7 +334,8 @@
 
                                             <div class="author-info">
                                                 <div class="author-pic">
-                                                    <img src="images/person-1.png" alt="Maria Jones" class="img-fluid" />
+                                                    <img src="home/images/person-1.png" alt="Maria Jones"
+                                                        class="img-fluid" />
                                                 </div>
                                                 <h3 class="font-weight-bold">
                                                     Maria Jones
@@ -405,7 +375,8 @@
 
                                             <div class="author-info">
                                                 <div class="author-pic">
-                                                    <img src="images/person-1.png" alt="Maria Jones" class="img-fluid" />
+                                                    <img src="home/images/person-1.png" alt="Maria Jones"
+                                                        class="img-fluid" />
                                                 </div>
                                                 <h3 class="font-weight-bold">
                                                     Maria Jones
@@ -441,7 +412,7 @@
             <div class="row">
                 <div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
                     <div class="post-entry">
-                        <a href="#" class="post-thumbnail"><img src="images/post-1.jpg" alt="Image"
+                        <a href="#" class="post-thumbnail"><img src="home/images/post-1.jpg" alt="Image"
                                 class="img-fluid" /></a>
                         <div class="post-content-entry">
                             <h3>
@@ -457,7 +428,7 @@
 
                 <div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
                     <div class="post-entry">
-                        <a href="#" class="post-thumbnail"><img src="images/post-2.jpg" alt="Image"
+                        <a href="#" class="post-thumbnail"><img src="home/images/post-2.jpg" alt="Image"
                                 class="img-fluid" /></a>
                         <div class="post-content-entry">
                             <h3>
@@ -473,7 +444,7 @@
 
                 <div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
                     <div class="post-entry">
-                        <a href="#" class="post-thumbnail"><img src="images/post-3.jpg" alt="Image"
+                        <a href="#" class="post-thumbnail"><img src="home/images/post-3.jpg" alt="Image"
                                 class="img-fluid" /></a>
                         <div class="post-content-entry">
                             <h3>

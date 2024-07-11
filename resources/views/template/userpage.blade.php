@@ -60,16 +60,16 @@
         <header>Contact Us</header>
         <div class="form">
             <div class="input-box">
-                <input type="text" id="name" placeholder="Your Name">
+                <input type="text" id="name" placeholder="Your Name" class="form-control">
             </div>
             <div class="input-box">
-                <input type="email" id="email" placeholder="Your Email">
+                <input type="email" id="email" placeholder="Your Email" class="form-control">
             </div>
             <div class="input-box">
-                <textarea id="message" rows="5" placeholder="Your Message"></textarea>
+                <textarea id="message" rows="5" placeholder="Your Message" class="form-control"></textarea>
             </div>
             <div class="submit-box">
-                <button id="send-button">Send</button>
+                <button id="send-button" class="btn btn-primary">Send</button>
             </div>
         </div>
     </div>
@@ -192,7 +192,7 @@
 <script src="home/js/bootstrap.bundle.min.js"></script>
 <script src="home/js/tiny-slider.js"></script>
 <script src="home/js/custom.js"></script>
-{{-- <script>
+<script>
     document.addEventListener('DOMContentLoaded', function() {
         const contactToggle = document.getElementById('contact-toggle');
         const contactBox = document.getElementById('contact-box');
@@ -237,4 +237,4 @@
             }
         });
     });
-</script> --}}
+</script>
