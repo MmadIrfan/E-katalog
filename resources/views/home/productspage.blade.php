@@ -1,26 +1,11 @@
 @extends('template.userpage')
 @section('title', 'Products')
+@section('judul', 'Shop')
+@section('sub',
+    'We commit to delivering only The Best Rattan Furniture to you. Our products are made from Natural and
+    high-quality raw materials.')
 @section('content')
-    <!-- Start Hero Section -->
-    <div class="hero">
-        <div class="container">
-            <div class="row justify-content-between">
-                <div class="col-lg-5">
-                    <div class="intro-excerpt">
-                        <h1>Shop</h1>
-                    </div>
-                </div>
-                <div class="col-lg-7">
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Hero Section -->
-
-
-
-    <div class="untree_co-section product-section before-footer-section">
+    <div id="product-section" class="untree_co-section product-section before-footer-section">
         <div class="container">
             <div class="row">
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Home;
 use App\Models\Products;
+use App\Models\Blogs;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -21,6 +22,16 @@ class HomeController extends Controller
     {
         $products = Products::all();
         return view("home.productspage", ['products' => $products]);
+    }
+
+    public function blog()
+    {
+        return view("home.blogs");
+    }
+
+    public function contact()
+    {
+        return view("home.contact");
     }
 
     /**

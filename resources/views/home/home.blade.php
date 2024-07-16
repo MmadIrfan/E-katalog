@@ -1,37 +1,10 @@
 @extends('template.userpage')
 @section('title', 'Home')
+@section('judul', 'BEST QUALITY RATTAN FURNITURE FROM INDONESIA')
+@section('sub',
+    'We commit to delivering only The Best Rattan Furniture to you. Our products are made from Natural and
+    high-quality raw materials.')
 @section('content')
-
-    <div class="hero">
-        <div class="container">
-            <div class="row justify-content-between">
-                <div class="col-lg-5">
-                    <div class="intro-excerpt">
-                        <h1>
-                            BEST QUALITY RATTAN FURNITURE
-                            <span clsas="d-block">FROM INDONESIA</span>
-                        </h1>
-                        <p class="mb-4">
-                            We commit to delivering only The Best Rattan Furniture to you. Our products are made from
-                            Natural and high-quality raw materials.
-                        </p>
-                        <p>
-                            <a href="mailto:marketing@aestheticrattan.com?subject=Inquiry%20about%20Rattan%20Furniture&body=Hello,%0D%0AI%20am%20interested%20in%20learning%20more%20about%20your%20rattan%20furniture.%0D%0AThank%20you!"
-                                class="btn btn-secondary me-2">Shop Now</a>
-                            <a href="#product-section" class="btn btn-white-outline">Explore</a>
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-7">
-                    <div class="hero-img-wrap">
-                        <img src="images/OWL_0301-811.png" class="img-fluid" />
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Hero Section -->
-
     <!-- Start Product Section -->
     <div id="product-section" class="product-section">
         <div class="container">
@@ -50,17 +23,13 @@
                 <!-- End Column 1 -->
 
                 <!-- Start Column 2 -->
-                @foreach ($products as $product)
+                @foreach ($products->take(3) as $product)
                     <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
                         <a class="product-item" href="cart.html">
                             <img src="{{ asset('storage/products/' . $product->foto) }}" class="img-fluid product-thumbnail"
                                 style="object-fit: cover; width: 100%; height: 200px;" />
                             <h3 class="product-title">{{ $product->nama }}</h3>
                             <strong class="product-price">Details</strong>
-
-                            <span class="icon-cross">
-                                <img src="home/images/cross.svg" class="img-fluid" />
-                            </span>
                         </a>
                     </div>
                 @endforeach
@@ -197,53 +166,23 @@
     <div class="popular-product">
         <div class="container">
             <div class="row">
-                <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
-                    <div class="product-item-sm d-flex">
-                        <div class="thumbnail">
-                            <img src="images/OWL_0107-removebg-preview.png" alt="Image" class="img-fluid" />
-                        </div>
-                        <div class="pt-3">
-                            <h3>Nordic Chair</h3>
-                            <p>
-                                Donec facilisis quam ut purus rutrum
-                                lobortis. Donec vitae odio
-                            </p>
-                            <p><a href="#">Read More</a></p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
-                    <div class="product-item-sm d-flex">
-                        <div class="thumbnail">
-                            <img src="images/OWL_0174-removebg-preview.png" alt="Image" class="img-fluid" />
-                        </div>
-                        <div class="pt-3">
-                            <h3>Kruzo Aero Chair</h3>
-                            <p>
-                                Donec facilisis quam ut purus rutrum
-                                lobortis. Donec vitae odio
-                            </p>
-                            <p><a href="#">Read More</a></p>
+                @foreach ($products->take(3) as $product)
+                    <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
+                        <div class="product-item-sm d-flex">
+                            <div class="thumbnail">
+                                <img src="{{ asset('storage/products/' . $product->foto) }}" alt="Image"
+                                    class="img-fluid" />
+                            </div>
+                            <div class="pt-3">
+                                <h3>{{ $product->nama }}</h3>
+                                <p>
+                                    {{ $product->deskripsi }}
+                                </p>
+                                <p><a href="#">Read More</a></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
-                    <div class="product-item-sm d-flex">
-                        <div class="thumbnail">
-                            <img src="images/OWL_0211-removebg-preview.png" alt="Image" class="img-fluid" />
-                        </div>
-                        <div class="pt-3">
-                            <h3>Ergonomic Chair</h3>
-                            <p>
-                                Donec facilisis quam ut purus rutrum
-                                lobortis. Donec vitae odio
-                            </p>
-                            <p><a href="#">Read More</a></p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

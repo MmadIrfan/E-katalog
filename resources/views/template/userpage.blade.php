@@ -38,10 +38,10 @@
                             href="/products">Products</a></li>
                     <li class="nav-item {{ Request::is('AboutUs') ? 'active' : '' }}"><a class="nav-link"
                             href="about.html">About us</a></li>
-                    <li class="nav-item {{ Request::is('') ? 'active' : '' }}"><a class="nav-link"
-                            href="blog.html">Blog</a></li>
-                    <li class="nav-item {{ Request::is('') ? 'active' : '' }}"><a class="nav-link"
-                            href="contact.html">Contact us</a></li>
+                    <li class="nav-item {{ Request::is('blogs') ? 'active' : '' }}"><a class="nav-link"
+                            href="/blogs">Blog</a></li>
+                    <li class="nav-item {{ Request::is('contact') ? 'active' : '' }}"><a class="nav-link"
+                            href="/contact">Contact us</a></li>
                 </ul>
 
                 <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
@@ -52,6 +52,34 @@
             </div>
         </div>
     </nav>
+    <!-- Start Hero Section -->
+    <div class="hero">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-lg-5">
+                    <div class="intro-excerpt">
+                        <h1>
+                            @yield('judul')
+                        </h1>
+                        <p class="mb-4">
+                            @yield('sub')
+                        </p>
+                        <p>
+                            <a href="mailto:marketing@aestheticrattan.com?subject=Inquiry%20about%20Rattan%20Furniture&body=Hello,%0D%0AI%20am%20interested%20in%20learning%20more%20about%20your%20rattan%20furniture.%0D%0AThank%20you!"
+                                class="btn btn-secondary me-2">Shop Now</a>
+                            <a href="#product-section" class="btn btn-white-outline">Explore</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="hero-img-wrap">
+                        <img src="images/OWL_0301-811.png" class="img-fluid" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Hero Section -->
     <div>
         @yield('content')
     </div>
@@ -199,7 +227,8 @@
         const sendButton = document.getElementById('send-button');
 
         contactToggle.addEventListener('click', () => {
-            contactBox.style.display = contactBox.style.display === 'none' ? 'block' : 'none';
+            const isVisible = contactBox.style.display === 'block';
+            contactBox.style.display = isVisible ? 'none' : 'block';
         });
 
         sendButton.addEventListener('click', () => {

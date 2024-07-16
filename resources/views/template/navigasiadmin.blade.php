@@ -64,6 +64,15 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
+                            <a class="sidebar-link {{ Request::is('updateblogs*') ? 'active' : '' }}"
+                                href="/updateblogs" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-article"></i>
+                                </span>
+                                <span class="hide-menu">Blogs</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
                             <a class="sidebar-link" href="./ui-card.html" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-address-book"></i>
