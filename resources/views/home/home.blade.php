@@ -25,11 +25,14 @@
                 <!-- Start Column 2 -->
                 @foreach ($products->take(3) as $product)
                     <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-                        <a class="product-item" href="cart.html">
+                        <a class="product-item" href="{{ route('home.show', $product->id) }}">
                             <img src="{{ asset('storage/products/' . $product->foto) }}" class="img-fluid product-thumbnail"
                                 style="object-fit: cover; width: 100%; height: 200px;" />
                             <h3 class="product-title">{{ $product->nama }}</h3>
-                            <strong class="product-price">Details</strong>
+                            {{-- <strong class="product-price">$566</strong> --}}
+                            <span class="icon-cross">
+                                <img src="home/images/arrow-narrow-right.svg" class="img-fluid" />
+                            </span>
                         </a>
                     </div>
                 @endforeach
@@ -167,21 +170,23 @@
         <div class="container">
             <div class="row">
                 @foreach ($products->take(3) as $product)
-                    <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
-                        <div class="product-item-sm d-flex">
-                            <div class="thumbnail">
-                                <img src="{{ asset('storage/products/' . $product->foto) }}" alt="Image"
-                                    class="img-fluid" />
-                            </div>
-                            <div class="pt-3">
-                                <h3>{{ $product->nama }}</h3>
-                                <p>
-                                    {{ $product->deskripsi }}
-                                </p>
-                                <p><a href="#">Read More</a></p>
+                    {{-- @if ($product->popular == 'yes') --}}
+                        <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
+                            <div class="product-item-sm d-flex">
+                                <div class="thumbnail">
+                                    <img src="{{ asset('storage/products/' . $product->foto) }}" alt="Image"
+                                        class="img-fluid" />
+                                </div>
+                                <div class="pt-3">
+                                    <h3>{{ $product->nama }}</h3>
+                                    <p>
+                                        {{ substr($product->deskripsi, 0, 50) . '...' }}
+                                    </p>
+                                    <p><a href="{{ route('home.show', $product->id) }}">Read More</a></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    {{-- @endif --}}
                 @endforeach
             </div>
         </div>

@@ -12,14 +12,13 @@
                 <!-- Start Column 1 -->
                 @foreach ($products as $product)
                     <div class="col-12 col-md-4 col-lg-3 mb-5">
-                        <a class="product-item" href="#">
+                        <a class="product-item" href="{{ route('home.show', $product->id) }}">
                             <img src="{{ asset('storage/products/' . $product->foto) }}" class="img-fluid product-thumbnail"
                                 style="object-fit: cover; width: 100%; height: 200px;">
                             <h3 class="product-title">{{ $product->nama }}</h3>
-                            <strong class="product-price">PRODUCT DETAILS</strong>
-
+                            {{-- <strong class="product-price">$566</strong> --}}
                             <span class="icon-cross">
-                                <img src="home/images/cross.svg" class="img-fluid">
+                                <img src="home/images/arrow-narrow-right.svg" class="img-fluid">
                             </span>
                         </a>
                     </div>

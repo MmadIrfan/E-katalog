@@ -53,9 +53,10 @@ class HomeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Home $home)
+    public function show(Home $home, $id)
     {
-        //
+        $products = Products::findOrFail($id);
+        return view('home.detailproduct', compact('products'));
     }
 
     /**

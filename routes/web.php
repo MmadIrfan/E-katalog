@@ -9,6 +9,7 @@ use App\Models\Products;
 
 Route::get('/', [HomeController::class,'index']);
 Route::get('/products', [HomeController::class,'produk']);
+Route::get('/products/{id}', [HomeController::class, 'show'])->name('home.show');
 Route::get('/blogs', [HomeController::class,'blog']);
 Route::get('/contact', [HomeController::class,'contact']);
 Route::get('/dashboard', function () {

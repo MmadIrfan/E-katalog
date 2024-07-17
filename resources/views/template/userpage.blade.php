@@ -10,11 +10,11 @@
     <meta name="keywords" content="bootstrap, bootstrap4" />
 
     <!-- Bootstrap CSS -->
-    <link href="home/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('home/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="home/css/tiny-slider.css" rel="stylesheet">
-    <link href="home/css/style.css" rel="stylesheet">
-    <link rel="shortcut icon" type="image/png" href="images/Logo.png" />
+    <link href="{{ asset('home/css/tiny-slider.css') }}" rel="stylesheet">
+    <link href="{{ asset('home/css/style.css') }}" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('images/Logo.png') }}" />
     <title>@yield('title') | Aesthetic Rattan</title>
 </head>
 
@@ -34,7 +34,7 @@
                     <li class="nav-item {{ Request::is('/') ? 'active' : '' }}">
                         <a class="nav-link" href="/">Home</a>
                     </li>
-                    <li class="nav-item {{ Request::is('products') ? 'active' : '' }}"><a class="nav-link"
+                    <li class="nav-item {{ Request::is('products*') ? 'active' : '' }}"><a class="nav-link"
                             href="/products">Products</a></li>
                     <li class="nav-item {{ Request::is('AboutUs') ? 'active' : '' }}"><a class="nav-link"
                             href="about.html">About us</a></li>
@@ -71,11 +71,13 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-lg-7">
-                    <div class="hero-img-wrap">
-                        <img src="images/OWL_0301-811.png" class="img-fluid" />
+                @section('hero-image')
+                    <div class="col-lg-7">
+                        <div class="hero-img-wrap">
+                            <img src="{{ asset('images/OWL_0301-811.png') }}" class="img-fluid" />
+                        </div>
                     </div>
-                </div>
+                @show
             </div>
         </div>
     </div>
@@ -106,14 +108,14 @@
         <div class="container relative">
 
             <div class="sofa-img">
-                <img src="images/_OWL2821.png" alt="Image" class="img-fluid">
+                <img src="{{ asset('images/_OWL2821.png') }}" alt="Image" class="img-fluid">
             </div>
 
             <div class="row">
                 <div class="col-lg-8">
                     <div class="subscription-form">
                         <h3 class="d-flex align-items-center"><span class="me-1"><img
-                                    src="home/images/envelope-outline.svg" alt="Image"
+                                    src="{{ asset('home/images/envelope-outline.svg') }}" alt="Image"
                                     class="img-fluid"></span><span>Subscribe to Newsletter</span></h3>
 
                         <form action="#" class="row g-3">
@@ -139,15 +141,15 @@
                     <div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">Aesthetic
                             Rattan<span>.</span></a>
                     </div>
-                    <p class="mb-4">Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus
-                        malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.
-                        Pellentesque habitant</p>
+                    <p class="mb-4">For over two decades, our journey in the rattan furniture industry has been
+                        nothing short of remarkable. From humble beginnings to becoming a leading force, we’ve woven
+                        together a legacy of quality, artistry, and customer satisfaction that stands the test of time.
+                    </p>
 
                     <ul class="list-unstyled custom-social">
                         <li><a href="#"><span class="fa fa-brands fa-facebook-f"></span></a></li>
-                        <li><a href="#"><span class="fa fa-brands fa-twitter"></span></a></li>
+                        <li><a href="#"><span class="fa fa-brands fa-whatsapp"></span></a></li>
                         <li><a href="#"><span class="fa fa-brands fa-instagram"></span></a></li>
-                        <li><a href="#"><span class="fa fa-brands fa-linkedin"></span></a></li>
                     </ul>
                 </div>
 
@@ -155,10 +157,9 @@
                     <div class="row links-wrap">
                         <div class="col-6 col-sm-6 col-md-3">
                             <ul class="list-unstyled">
-                                <li><a href="#">About us</a></li>
-                                <li><a href="#">Services</a></li>
-                                <li><a href="#">Blog</a></li>
-                                <li><a href="#">Contact us</a></li>
+                                <li><a href="about">About us</a></li>
+                                <li><a href="blogs">Blog</a></li>
+                                <li><a href="contact">Contact us</a></li>
                             </ul>
                         </div>
 
@@ -217,9 +218,9 @@
     <!-- End Footer Section -->
 </body>
 
-<script src="home/js/bootstrap.bundle.min.js"></script>
-<script src="home/js/tiny-slider.js"></script>
-<script src="home/js/custom.js"></script>
+<script src="{{ asset('home/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('home/js/tiny-slider.js') }}"></script>
+<script src="{{ asset('home/js/custom.js') }}"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const contactToggle = document.getElementById('contact-toggle');
