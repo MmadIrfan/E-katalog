@@ -895,45 +895,122 @@ textarea {
 /* Style untuk Pop-up Contact Form */
 #contact-toggle {
     position: fixed;
-    bottom: 15px;
-    right: 15px;
-    padding: 10px 15px;
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 20px;
     cursor: pointer;
     border: none;
-    border-radius: 20px;
+    border-radius: 30px;
+    background-color: #f9bf29;
+    color: #000;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
     z-index: 1050;
 }
 
-#contact-box {
-    display: none;
-    position: fixed;
-    bottom: 65px;
-    right: 20px;
-    width: 300px;
-    background: #fff;
-    border: 1px solid #ccc;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    z-index: 1000;
+#contact-toggle:hover {
+    background-color: #e5ad1d;
+    transform: translateY(-2px);
 }
 
-#contact-box header {
+#contact-box,
+#live-chat-box {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 320px;
+    background: #fff;
+    border: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    z-index: 1000;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+#contact-box.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+}
+
+#contact-box header,
+#live-chat-box header {
     background: #f9bf29;
     color: #000000;
-    padding: 10px;
-    border-radius: 5px 5px 0 0;
-    text-align: center;
-    font-weight: 500;
-}
-
-#contact-box .form {
     padding: 15px;
+    font-weight: 600;
+    font-size: 18px;
+    text-align: center;
 }
 
-#contact-box .input-box {
+.form,
+.chat-messages {
+    padding: 20px;
+}
+
+.input-box {
+    margin-bottom: 15px;
+}
+
+.input-box input,
+.input-box textarea,
+.chat-input input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.submit-box button,
+.chat-input button {
+    width: 100%;
+    padding: 10px;
+    background-color: #3b5d50;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-box button:hover,
+.chat-input button:hover {
+    background-color: #3b916e;
+}
+
+.chat-messages {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.message {
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    padding: 10px;
     margin-bottom: 10px;
 }
 
-#contact-box .submit-box {
-    text-align: center;
+.chat-input {
+    display: flex;
+    padding: 15px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.chat-input input {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+.chat-input button {
+    width: auto;
+}
+
+.error {
+    color: #ff0000;
+    font-size: 12px;
+    margin-top: 5px;
 }

@@ -16,6 +16,7 @@
     <link href="{{ asset('home/css/style.css') }}" rel="stylesheet">
     <link rel="shortcut icon" type="image/png" href="{{ asset('images/Logo.png') }}" />
     <title>@yield('title') | Aesthetic Rattan</title>
+    @livewireStyles
 </head>
 
 <body>
@@ -85,7 +86,8 @@
     <div>
         @yield('content')
     </div>
-    <button id="contact-toggle" class="btn btn-secondary me-2"><i class="fa-solid fa-headset"></i> Contact Us</button>
+    @livewire('chat')
+    {{-- <button id="contact-toggle" class="btn btn-secondary me-2"><i class="fa-solid fa-headset"></i> Contact Us</button>
     <div id="contact-box">
         <header>Contact Us</header>
         <div class="form">
@@ -102,7 +104,7 @@
                 <button id="send-button" class="btn btn-primary">Send</button>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Start Footer Section -->
     <footer class="footer-section">
         <div class="container relative">
@@ -216,6 +218,7 @@
         </div>
     </footer>
     <!-- End Footer Section -->
+    @livewireScripts
 </body>
 
 <script src="{{ asset('home/js/bootstrap.bundle.min.js') }}"></script>
@@ -230,41 +233,6 @@
         contactToggle.addEventListener('click', () => {
             const isVisible = contactBox.style.display === 'block';
             contactBox.style.display = isVisible ? 'none' : 'block';
-        });
-
-        sendButton.addEventListener('click', () => {
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-
-            if (name && email && message) {
-                fetch('{{ route('updateproducts.store') }}', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                        },
-                        body: JSON.stringify({
-                            name,
-                            email,
-                            message
-                        })
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        alert(data.success);
-                        contactBox.style.display = 'none';
-                        document.getElementById('name').value = '';
-                        document.getElementById('email').value = '';
-                        document.getElementById('message').value = '';
-                    })
-                    .catch((error) => {
-                        console.error('Error:', error);
-                        alert('Error sending message.');
-                    });
-            } else {
-                alert('Please fill in all fields.');
-            }
         });
     });
 </script>
