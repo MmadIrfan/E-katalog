@@ -31,18 +31,18 @@
     </div>
 
     @if ($showLiveChat)
-        <div id="live-chat-box">
+        <div id="live-chat-box" wire:poll.3s="loadChats">
             <header>Live Chat</header>
             <div class="chat-messages">
                 @foreach ($chats as $chat)
-                    <div class="message">
-                        <strong>{{ $chatSession->name }}:</strong> {{ $chat->message }}
+                    <div class="{{ $chat->is_admin ? 'admin' : 'user' }} p-2 mb-2 rounded">
+                        <strong>{{ $chat->is_admin ? 'Admin' : $chatSession->name }}:</strong>
+                        {{ $chat->message }}
                     </div>
                 @endforeach
             </div>
             <div class="chat-input">
-                <input type="text" wire:model.defer="message" wire:keydown.enter="submit"
-                    placeholder="Type a message...">
+                <input type="text" wire:model="message" wire:keydown.enter="submit" placeholder="Type a message...">
                 <button wire:click="submit">Send</button>
             </div>
         </div>

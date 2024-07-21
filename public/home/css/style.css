@@ -1014,3 +1014,13 @@ textarea {
     font-size: 12px;
     margin-top: 5px;
 }
+
+.admin {
+    background-color: #f1f1f1; /* warna biru muda */
+    color: black;
+}
+
+.user {
+    background-color: #3b916e; /* warna hijau */
+    color: white;
+}

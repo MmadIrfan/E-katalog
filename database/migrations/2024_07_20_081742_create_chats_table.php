@@ -11,6 +11,7 @@ class CreateChatsTable extends Migration
         Schema::create('chats', function (Blueprint $table) {
             $table->id();
             $table->text('message');
+            $table->boolean('is_admin')->default(false);
             $table->unsignedBigInteger('chat_session_id');
             $table->timestamps();
         });

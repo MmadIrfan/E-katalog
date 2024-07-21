@@ -7,8 +7,7 @@
     <title>@yield('title') | Admin AR</title>
     <link rel="shortcut icon" type="image/png" href="{{ asset('images/Logo.png') }}" />
     <link rel="stylesheet" href="{{ asset('admin/src/assets/css/styles.min.css') }}" />
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    @livewireStyles
 </head>
 
 <body>
@@ -81,7 +80,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="./ui-forms.html" aria-expanded="false">
+                            <a class="sidebar-link" href="/chats" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-message"></i>
                                 </span>
@@ -158,24 +157,12 @@
             </div>
         </div>
     </div>
-
+    @livewireScripts
 </body>
 <script src="{{ asset('admin/src/assets/libs/jquery/dist/jquery.min.js') }}"></script>
 <script src="{{ asset('admin/src/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('admin/src/assets/js/sidebarmenu.js') }}"></script>
 <script src="{{ asset('admin/src/assets/js/app.min.js') }}"></script>
-<script src="{{ asset('admin/src/assets/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
 <script src="{{ asset('admin/src/assets/libs/simplebar/dist/simplebar.js') }}"></script>
-<script src="{{ asset('admin/src/assets/js/dashboard.js') }}"></script>
-<!-- Bootstrap JS -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-<!-- Quill JS -->
-<script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
-<!-- Inisialisasi Quill -->
-<script>
-    var quill = new Quill('#textText', {
-        theme: 'snow'
-    });
-</script>
 
 </html>

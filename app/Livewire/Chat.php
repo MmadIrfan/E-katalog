@@ -20,6 +20,13 @@ class Chat extends Component
         $this->chats = collect();
     }
 
+    public function loadChats()
+    {
+        if ($this->chatSession) {
+            $this->chats = $this->chatSession->chats()->orderBy('created_at', 'asc')->get();
+        }
+    }
+
     public function toggleChatForm()
     {
         $this->showChatForm = !$this->showChatForm;

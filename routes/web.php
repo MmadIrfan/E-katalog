@@ -23,6 +23,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('/updateproducts', ProductsController::class);
     Route::resource('/updateblogs', BlogsController::class);
+    Route::get('/chats', function () {
+        return view('livewire.admin.chats');
+    })->name('admin.chats');
 });
 
 require __DIR__.'/auth.php';
