@@ -1,29 +1,50 @@
-<div wire:poll.3s="loadChats">
+<div class="chat-container d-flex flex-column" wire:poll.3s="loadChats">
     @if ($chatSession)
-        <h2>Chat with {{ $chatSession->name }}</h2>
-        <div id="chat-messages" class="mb-4" style="max-height: 400px; overflow-y: auto;">
+        <div class="chat-header bg-light p-3 border-bottom">
+            <h5 class="mb-0">
+                <i class="fas fa-user-circle mr-2"></i>
+                Chat with {{ $chatSession->name }}
+            </h5>
+            <small class="text-muted">{{ $chatSession->email }}</small>
+        </div>
+        <div id="chat-messages" class="chat-messages flex-grow-1 p-3">
             @foreach ($chats as $chat)
-                <div class="{{ $chat->is_admin ? 'admin bg-light' : 'user bg-info' }} p-2 mb-2 rounded">
-                    <strong>{{ $chat->is_admin ? 'Admin' : $chatSession->name }}:</strong>
-                    {{ $chat->message }}
+                <div wire:key="chat-{{ $chat->id }}"
+                    class="message-wrapper {{ $chat->is_admin ? 'admin' : 'user' }} mb-3">
+                    <div class="message-content p-3 rounded">
+                        <p class="mb-1">{{ $chat->message }}</p>
+                        <small class="message-time text-muted">
+                            {{ $chat->created_at->setTimezone('Asia/Jakarta')->format('H:i') }} -
+                            {{ $chat->is_admin ? 'Admin' : $chatSession->name }}
+                        </small>
+                    </div>
                 </div>
             @endforeach
         </div>
-        <form wire:submit.prevent="sendMessage">
-            <div class="form-group">
-                <textarea wire:model="message" class="form-control" required></textarea>
+        <form wire:submit.prevent="sendMessage" class="chat-input mt-auto p-3 bg-light border-top">
+            <div class="input-group">
+                <textarea wire:model="message" class="form-control" placeholder="Type your message..." required rows="2"></textarea>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-paper-plane"></i> Send
+                </button>
             </div>
-            <button type="submit" class="btn btn-primary">Send</button>
         </form>
     @else
-        <p>Select a chat session to start messaging.</p>
+        <div class="no-chat-selected h-100 d-flex flex-column justify-content-center align-items-center text-muted">
+            <i class="fas fa-comments fa-4x mb-3"></i>
+            <p class="lead">Select a chat session to start messaging.</p>
+        </div>
     @endif
 </div>
+
 <script>
     document.addEventListener('livewire:initialized', () => {
-        Livewire.on('chatUpdated', () => {
+        const scrollToBottom = () => {
             const chatMessages = document.getElementById('chat-messages');
             chatMessages.scrollTop = chatMessages.scrollHeight;
-        });
+        };
+
+        Livewire.on('chatUpdated', scrollToBottom);
+        scrollToBottom();
     });
 </script>

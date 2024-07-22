@@ -25,7 +25,6 @@ class ChatUser extends Component
     {
         if ($this->chatSession) {
             $this->chats = $this->chatSession->chats()->orderBy('created_at', 'asc')->get();
-            $this->dispatch('chatUpdated');
         }
     }
 

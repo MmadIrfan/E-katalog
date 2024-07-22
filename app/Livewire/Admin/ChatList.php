@@ -8,6 +8,9 @@ use App\Models\ChatSession;
 class ChatList extends Component
 {
     public $chatSessions;
+    public $activeSessionId;
+
+    protected $listeners = ['refreshChatList'];
 
     public function mount()
     {
@@ -16,6 +19,7 @@ class ChatList extends Component
 
     public function selectChat($chatSessionId)
     {
+        $this->activeSessionId = $chatSessionId;
         $this->dispatch('loadChat', chatSessionId: $chatSessionId);
     }
 
@@ -24,9 +28,13 @@ class ChatList extends Component
         $this->chatSessions = ChatSession::latest()->get();
     }
 
+    public function refreshChatList()
+    {
+        $this->loadChatSessions();
+    }
+
     public function render()
     {
-        // dd($this->chatSessions); // Hapus ini setelah debugging selesai
         return view('livewire.admin.chat-list');
     }
 }
