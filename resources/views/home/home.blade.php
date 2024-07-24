@@ -26,8 +26,8 @@
                 @foreach ($products->take(3) as $product)
                     <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
                         <a class="product-item" href="{{ route('home.show', $product->id) }}">
-                            <img src="{{ asset('storage/products/' . $product->foto) }}" class="img-fluid product-thumbnail"
-                                style="object-fit: cover; width: 100%; height: 200px;" />
+                            <img src="{{ asset('storage/products/thumbnail/' . $product->thumbnail) }}"
+                                class="img-fluid product-thumbnail" />
                             <h3 class="product-title">{{ $product->nama }}</h3>
                             {{-- <strong class="product-price">$566</strong> --}}
                             <span class="icon-cross">
@@ -158,7 +158,7 @@
                             Every creation is distinctive, reflecting your personality and aesthetic taste.
                         </li>
                     </ul>
-                    <p><a herf="#" class="btn">Explore</a></p>
+                    <p><a herf="about" class="btn">Explore</a></p>
                 </div>
             </div>
         </div>
@@ -169,13 +169,13 @@
     <div class="popular-product">
         <div class="container">
             <div class="row">
-                @foreach ($products->take(3) as $product)
-                    {{-- @if ($product->popular == 'yes') --}}
+                @foreach ($products->take(4) as $product)
+                    @if ($product->populer == 'Iya')
                         <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
                             <div class="product-item-sm d-flex">
                                 <div class="thumbnail">
-                                    <img src="{{ asset('storage/products/' . $product->foto) }}" alt="Image"
-                                        class="img-fluid" />
+                                    <img src="{{ asset('storage/products/thumbnail/' . $product->thumbnail) }}"
+                                        alt="Image" class="img-fluid" />
                                 </div>
                                 <div class="pt-3">
                                     <h3>{{ $product->nama }}</h3>
@@ -186,7 +186,7 @@
                                 </div>
                             </div>
                         </div>
-                    {{-- @endif --}}
+                    @endif
                 @endforeach
             </div>
         </div>
@@ -211,127 +211,33 @@
                         </div>
 
                         <div class="testimonial-slider">
-                            <div class="item">
-                                <div class="row justify-content-center">
-                                    <div class="col-lg-8 mx-auto">
-                                        <div class="testimonial-block text-center">
-                                            <blockquote class="mb-5">
-                                                <p>
-                                                    &ldquo;Donec facilisis
-                                                    quam ut purus rutrum
-                                                    lobortis. Donec vitae
-                                                    odio quis nisl dapibus
-                                                    malesuada. Nullam ac
-                                                    aliquet velit. Aliquam
-                                                    vulputate velit
-                                                    imperdiet dolor tempor
-                                                    tristique. Pellentesque
-                                                    habitant morbi tristique
-                                                    senectus et netus et
-                                                    malesuada fames ac
-                                                    turpis egestas. Integer
-                                                    convallis volutpat dui
-                                                    quis scelerisque.&rdquo;
-                                                </p>
-                                            </blockquote>
+                            @foreach ($testimonials as $testimonial)
+                                <div class="item">
+                                    <div class="row justify-content-center">
+                                        <div class="col-lg-8 mx-auto">
+                                            <div class="testimonial-block text-center">
+                                                <blockquote class="mb-5">
+                                                    <p>
+                                                        &ldquo;{{ $testimonial->testi }}&rdquo;
+                                                    </p>
+                                                </blockquote>
 
-                                            <div class="author-info">
-                                                <div class="author-pic">
-                                                    <img src="home/images/person-1.png" alt="Maria Jones"
-                                                        class="img-fluid" />
+                                                <div class="author-info">
+                                                    <div class="author-pic">
+                                                        <img src="{{ asset('storage/profile/' . $testimonial->foto) }}"
+                                                            alt="{{ $testimonial->nama }}" class="img-fluid" />
+                                                    </div>
+                                                    <h3 class="font-weight-bold">
+                                                        {{ $testimonial->nama }}
+                                                    </h3>
+                                                    <span
+                                                        class="position d-block mb-3">{{ $testimonial->pekerjaan }}</span>
                                                 </div>
-                                                <h3 class="font-weight-bold">
-                                                    Maria Jones
-                                                </h3>
-                                                <span class="position d-block mb-3">CEO, Co-Founder, XYZ
-                                                    Inc.</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- END item -->
-
-                            <div class="item">
-                                <div class="row justify-content-center">
-                                    <div class="col-lg-8 mx-auto">
-                                        <div class="testimonial-block text-center">
-                                            <blockquote class="mb-5">
-                                                <p>
-                                                    &ldquo;Donec facilisis
-                                                    quam ut purus rutrum
-                                                    lobortis. Donec vitae
-                                                    odio quis nisl dapibus
-                                                    malesuada. Nullam ac
-                                                    aliquet velit. Aliquam
-                                                    vulputate velit
-                                                    imperdiet dolor tempor
-                                                    tristique. Pellentesque
-                                                    habitant morbi tristique
-                                                    senectus et netus et
-                                                    malesuada fames ac
-                                                    turpis egestas. Integer
-                                                    convallis volutpat dui
-                                                    quis scelerisque.&rdquo;
-                                                </p>
-                                            </blockquote>
-
-                                            <div class="author-info">
-                                                <div class="author-pic">
-                                                    <img src="home/images/person-1.png" alt="Maria Jones"
-                                                        class="img-fluid" />
-                                                </div>
-                                                <h3 class="font-weight-bold">
-                                                    Maria Jones
-                                                </h3>
-                                                <span class="position d-block mb-3">CEO, Co-Founder, XYZ
-                                                    Inc.</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- END item -->
-
-                            <div class="item">
-                                <div class="row justify-content-center">
-                                    <div class="col-lg-8 mx-auto">
-                                        <div class="testimonial-block text-center">
-                                            <blockquote class="mb-5">
-                                                <p>
-                                                    &ldquo;Donec facilisis
-                                                    quam ut purus rutrum
-                                                    lobortis. Donec vitae
-                                                    odio quis nisl dapibus
-                                                    malesuada. Nullam ac
-                                                    aliquet velit. Aliquam
-                                                    vulputate velit
-                                                    imperdiet dolor tempor
-                                                    tristique. Pellentesque
-                                                    habitant morbi tristique
-                                                    senectus et netus et
-                                                    malesuada fames ac
-                                                    turpis egestas. Integer
-                                                    convallis volutpat dui
-                                                    quis scelerisque.&rdquo;
-                                                </p>
-                                            </blockquote>
-
-                                            <div class="author-info">
-                                                <div class="author-pic">
-                                                    <img src="home/images/person-1.png" alt="Maria Jones"
-                                                        class="img-fluid" />
-                                                </div>
-                                                <h3 class="font-weight-bold">
-                                                    Maria Jones
-                                                </h3>
-                                                <span class="position d-block mb-3">CEO, Co-Founder, XYZ
-                                                    Inc.</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                             <!-- END item -->
                         </div>
                     </div>
@@ -349,59 +255,30 @@
                     <h2 class="section-title">Recent Blog</h2>
                 </div>
                 <div class="col-md-6 text-start text-md-end">
-                    <a href="#" class="more">View All Posts</a>
+                    <a href="/blogs" class="more">View All Posts</a>
                 </div>
             </div>
 
             <div class="row">
-                <div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
-                    <div class="post-entry">
-                        <a href="#" class="post-thumbnail"><img src="home/images/post-1.jpg" alt="Image"
-                                class="img-fluid" /></a>
-                        <div class="post-content-entry">
-                            <h3>
-                                <a href="#">First Time Home Owner Ideas</a>
-                            </h3>
-                            <div class="meta">
-                                <span>by <a href="#">Kristin Watson</a></span>
-                                <span>on <a href="#">Dec 19, 2021</a></span>
+                @foreach ($blogs->take(3) as $blog)
+                    <div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
+                        <div class="post-entry">
+                            <a href="{{ route('home.showblog', $blog->id) }}" class="post-thumbnail"><img
+                                    src="{{ asset('storage/blogs/' . $blog->foto) }}" alt="Image"
+                                    class="img-fluid" /></a>
+                            <div class="post-content-entry">
+                                <h3>
+                                    <a href="{{ route('home.showblog', $blog->id) }}">{{ $blog->judul }}</a>
+                                </h3>
+                                <div class="meta">
+                                    <span>by <a href="{{ route('home.showblog', $blog->id) }}">Admin</a></span>
+                                    <span>on <a
+                                            href="{{ route('home.showblog', $blog->id) }}">{{ $blog->created_at->setTimezone('Asia/Jakarta')->format('M d, Y') }}</a></span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
-                    <div class="post-entry">
-                        <a href="#" class="post-thumbnail"><img src="home/images/post-2.jpg" alt="Image"
-                                class="img-fluid" /></a>
-                        <div class="post-content-entry">
-                            <h3>
-                                <a href="#">How To Keep Your Furniture Clean</a>
-                            </h3>
-                            <div class="meta">
-                                <span>by <a href="#">Robert Fox</a></span>
-                                <span>on <a href="#">Dec 15, 2021</a></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
-                    <div class="post-entry">
-                        <a href="#" class="post-thumbnail"><img src="home/images/post-3.jpg" alt="Image"
-                                class="img-fluid" /></a>
-                        <div class="post-content-entry">
-                            <h3>
-                                <a href="#">Small Space Furniture Apartment
-                                    Ideas</a>
-                            </h3>
-                            <div class="meta">
-                                <span>by <a href="#">Kristin Watson</a></span>
-                                <span>on <a href="#">Dec 12, 2021</a></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

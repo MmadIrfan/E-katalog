@@ -1,10 +1,10 @@
 <div>
     <button id="contact-toggle" wire:click="toggleChatForm" class="btn">
-        <i class="fa-solid fa-headset"></i> Contact Us
+        <i class="fa-solid fa-headset"></i> Live Chat
     </button>
 
     <div id="contact-box" class="{{ $showChatForm ? '' : 'hidden' }}">
-        <header>Contact Us</header>
+        <header>Form Contact</header>
         <div class="form">
             <div class="input-box">
                 <input type="text" wire:model.defer="name" placeholder="Your Name" class="form-control">

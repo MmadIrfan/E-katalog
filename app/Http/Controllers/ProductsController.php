@@ -30,29 +30,32 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'nama'       => 'required',
-            'foto'       => 'required|image|mimes:png,jpg,jpeg',
-            'deskripsi'  => 'required',
-            'dimensi'    => 'required',
-            'warna'      => 'required',
-            'material'   => 'required',
-            'kategori'   => 'required'
-        ]);
-    
-        //upload image
-        $foto = $request->file('foto');
-        $foto->storeAs('public/products', $foto->hashName());
-    
+        $thumbnail = $request->file('thumbnail');
+        $thumbnailName = time() . '_thumbnail_' . $thumbnail->getClientOriginalName();
+        $thumbnail->storeAs('public/products/thumbnail', $thumbnailName);
+
+        // Upload foto-foto
+        $fotoNames = [];
+        if ($request->hasFile('foto')) {
+            foreach($request->file('foto') as $foto) {
+                $fotoName = time() . '_' . $foto->getClientOriginalName();
+                $foto->storeAs('public/products', $fotoName);
+                $fotoNames[] = $fotoName;
+            }
+        }
+
         $products = Products::create([
             'nama'       => $request->nama,
-            'foto'       => $foto->hashName(),
+            'thumbnail'  => $thumbnailName,
+            'foto'       => json_encode($fotoNames),
             'deskripsi'  => $request->deskripsi,
             'dimensi'    => $request->dimensi,
             'warna'      => $request->warna,
             'material'   => $request->material,
-            'kategori'   => $request->kategori
+            'kategori'   => $request->kategori,
+            'populer'    => $request->populer
         ]);
+
     
         if($products){
             //redirect dengan pesan sukses
@@ -85,42 +88,45 @@ class ProductsController extends Controller
      */
     public function update(Request $request, Products $products, $id)
     {
-        $this->validate($request, [
-            'nama'       => 'required',
-            'foto'       => 'image|mimes:png,jpg,jpeg',
-            'deskripsi'  => 'required',
-            'dimensi'    => 'required',
-            'warna'      => 'required',
-            'material'   => 'required',
-            'kategori'   => 'required'
-        ]);
         $products = Products::find($id);
 
+        // Update thumbnail jika ada
+        if ($request->hasFile('thumbnail')) {
+            Storage::delete('public/products/thumbnail/'.$products->thumbnail);
+            $thumbnail = $request->file('thumbnail');
+            $thumbnailName = time() . '_thumbnail_' . $thumbnail->getClientOriginalName();
+            $thumbnail->storeAs('public/products/thumbnail/', $thumbnailName);
+            $products->thumbnail = $thumbnailName;
+        }
+
+        // Update foto-foto jika ada
         if ($request->hasFile('foto')) {
-        //upload image
-        $foto = $request->file('foto');
-        $foto->storeAs('public/products', $foto->hashName());
-        Storage::delete('public/products/'.$products->foto);
-    
-        $products -> update([
+            // Hapus foto-foto lama
+            $oldFotos = json_decode($products->foto);
+            foreach ($oldFotos as $oldFoto) {
+                Storage::delete('public/products/'.$oldFoto);
+            }
+
+            // Upload foto-foto baru
+            $fotoNames = [];
+            foreach($request->file('foto') as $foto) {
+                $fotoName = time() . '_' . $foto->getClientOriginalName();
+                $foto->storeAs('public/products', $fotoName);
+                $fotoNames[] = $fotoName;
+            }
+            $products->foto = json_encode($fotoNames);
+        }
+
+        $products->update([
             'nama'       => $request->nama,
-            'foto'       => $foto->hashName(),
             'deskripsi'  => $request->deskripsi,
             'dimensi'    => $request->dimensi,
             'warna'      => $request->warna,
             'material'   => $request->material,
-            'kategori'   => $request->kategori
+            'kategori'   => $request->kategori,
+            'populer'    => $request->populer
         ]);
-    } else {
-        $products -> update([
-            'nama'       => $request->nama,
-            'deskripsi'  => $request->deskripsi,
-            'dimensi'    => $request->dimensi,
-            'warna'      => $request->warna,
-            'material'   => $request->material,
-            'kategori'   => $request->kategori
-        ]);
-    }
+
         if($products){
             //redirect dengan pesan sukses
             return redirect()->route('updateproducts.index')->with(['success' => 'Data Berhasil Disimpan!']);
@@ -137,7 +143,14 @@ class ProductsController extends Controller
     {
         $products = Products::find($id);
 
-        Storage::delete('public/products/'.$products->foto);
+        // Hapus thumbnail
+        Storage::delete('public/products/thumbnail/'.$products->thumbnail);
+
+        // Hapus foto-foto
+        $fotos = json_decode($products->foto);
+        foreach ($fotos as $foto) {
+            Storage::delete('public/products/'.$foto);
+        }
 
         $products->delete();
 

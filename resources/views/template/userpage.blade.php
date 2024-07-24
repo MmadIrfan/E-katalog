@@ -4,14 +4,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="shortcut icon" href="favicon.png">
-
     <meta name="description" content="" />
     <meta name="keywords" content="bootstrap, bootstrap4" />
 
     <!-- Bootstrap CSS -->
     <link href="{{ asset('home/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
     <link href="{{ asset('home/css/tiny-slider.css') }}" rel="stylesheet">
     <link href="{{ asset('home/css/style.css') }}" rel="stylesheet">
     <link rel="shortcut icon" type="image/png" href="{{ asset('images/Logo.png') }}" />
@@ -37,18 +36,22 @@
                     </li>
                     <li class="nav-item {{ Request::is('products*') ? 'active' : '' }}"><a class="nav-link"
                             href="/products">Products</a></li>
-                    <li class="nav-item {{ Request::is('AboutUs') ? 'active' : '' }}"><a class="nav-link"
-                            href="about.html">About us</a></li>
-                    <li class="nav-item {{ Request::is('blogs') ? 'active' : '' }}"><a class="nav-link"
+                    <li class="nav-item {{ Request::is('about') ? 'active' : '' }}"><a class="nav-link"
+                            href="/about">About us</a></li>
+                    <li class="nav-item {{ Request::is('blogs*') ? 'active' : '' }}"><a class="nav-link"
                             href="/blogs">Blog</a></li>
                     <li class="nav-item {{ Request::is('contact') ? 'active' : '' }}"><a class="nav-link"
                             href="/contact">Contact us</a></li>
                 </ul>
 
                 <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-                    <li><a class="nav-link" href="#"><i class="fa-brands fa-facebook fa-xl"></i></a></li>
-                    <li><a class="nav-link mx-2" href="#"><i class="fa-brands fa-instagram fa-xl"></i></a></li>
-                    <li><a class="nav-link" href="#"><i class="fa-brands fa-whatsapp fa-xl"></i></a></li>
+                    <li><a class="nav-link"
+                            href="mailto:marketing@aestheticrattan.com?subject=Inquiry%20about%20Rattan%20Furniture&body=Hello,%0D%0AI%20am%20interested%20in%20learning%20more%20about%20your%20rattan%20furniture.%0D%0AThank%20you!"><i
+                                class="far fa-brands fa-envelope fa-xl"></i></a></li>
+                    <li><a class="nav-link mx-2" href="https://www.instagram.com/aesthetic_rattan/"><i
+                                class="fa-brands fa-instagram fa-xl"></i></a></li>
+                    <li><a class="nav-link" href="https://wa.me/6282319677113"><i
+                                class="fa-brands fa-whatsapp fa-xl"></i></a></li>
                 </ul>
             </div>
         </div>
@@ -120,15 +123,34 @@
                                     src="{{ asset('home/images/envelope-outline.svg') }}" alt="Image"
                                     class="img-fluid"></span><span>Subscribe to Newsletter</span></h3>
 
-                        <form action="#" class="row g-3">
+                        {{-- <form action="{{ url('/send-email') }}" method="POST" class="row g-3">
+                            @csrf
                             <div class="col-auto">
-                                <input type="text" class="form-control" placeholder="Enter your name">
+                                <input type="text" name="name" class="form-control" placeholder="Enter your name"
+                                    required>
                             </div>
                             <div class="col-auto">
-                                <input type="email" class="form-control" placeholder="Enter your email">
+                                <input type="email" name="email" class="form-control"
+                                    placeholder="Enter your email" required>
                             </div>
                             <div class="col-auto">
-                                <button class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary">
+                                    <span class="fa fa-paper-plane"></span>
+                                </button>
+                            </div>
+                        </form> --}}
+                        <form id="inquiryForm" onsubmit="return previewEmail(event)" class="row g-3">
+                            @csrf
+                            <div class="col-auto">
+                                <input type="text" name="name" id="name" class="form-control"
+                                    placeholder="Enter your name" required>
+                            </div>
+                            <div class="col-auto">
+                                <input type="email" name="email" id="email" class="form-control"
+                                    placeholder="Enter your email" required>
+                            </div>
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-primary">
                                     <span class="fa fa-paper-plane"></span>
                                 </button>
                             </div>
@@ -149,9 +171,13 @@
                     </p>
 
                     <ul class="list-unstyled custom-social">
-                        <li><a href="#"><span class="fa fa-brands fa-facebook-f"></span></a></li>
-                        <li><a href="#"><span class="fa fa-brands fa-whatsapp"></span></a></li>
-                        <li><a href="#"><span class="fa fa-brands fa-instagram"></span></a></li>
+                        <li><a
+                                href="mailto:marketing@aestheticrattan.com?subject=Inquiry%20about%20Rattan%20Furniture&body=Hello,%0D%0AI%20am%20interested%20in%20learning%20more%20about%20your%20rattan%20furniture.%0D%0AThank%20you!"><span
+                                    class="far fa-brands fa-envelope"></span></a></li>
+                        <li><a href="https://www.instagram.com/aesthetic_rattan/"><span
+                                    class="fa fa-brands fa-whatsapp"></span></a></li>
+                        <li><a href="https://wa.me/6282319677113"><span class="fa fa-brands fa-instagram"></span></a>
+                        </li>
                     </ul>
                 </div>
 
@@ -184,14 +210,16 @@
 
                         <div class="col-6 col-sm-6 col-md-3">
                             <ul class="list-unstyled">
-                                <li><a href="#">Nordic Chair</a></li>
-                                <li><a href="#">Kruzo Aero</a></li>
-                                <li><a href="#">Ergonomic Chair</a></li>
+                                @foreach ($products->take(4) as $product)
+                                    @if ($product->populer == 'Iya')
+                                        <li><a href="{{ route('home.show', $product->id) }}">{{ $product->nama }}</a>
+                                        </li>
+                                    @endif
+                                @endforeach
                             </ul>
                         </div>
                     </div>
                 </div>
-
             </div>
 
             <div class="border-top copyright">
@@ -205,12 +233,12 @@
                         </p>
                     </div>
 
-                    <div class="col-lg-6 text-center text-lg-end">
+                    {{-- <div class="col-lg-6 text-center text-lg-end">
                         <ul class="list-unstyled d-inline-flex ms-auto">
                             <li class="me-4"><a href="#">Terms &amp; Conditions</a></li>
                             <li><a href="#">Privacy Policy</a></li>
                         </ul>
-                    </div>
+                    </div> --}}
 
                 </div>
             </div>
@@ -221,6 +249,7 @@
     @livewireScripts
 </body>
 
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
 <script src="{{ asset('home/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('home/js/tiny-slider.js') }}"></script>
 <script src="{{ asset('home/js/custom.js') }}"></script>
@@ -233,6 +262,59 @@
         contactToggle.addEventListener('click', () => {
             const isVisible = contactBox.style.display === 'block';
             contactBox.style.display = isVisible ? 'none' : 'block';
+        });
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        Fancybox.bind("[data-fancybox]", {
+            // Opsi Fancybox di sini
+        });
+    });
+</script>
+<script src="{{ asset('home/js/email-preview.js') }}"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const galleryItems = document.querySelectorAll('.gallery-item img');
+        const mainImage = document.getElementById('main-image');
+
+        // Function to update transparency
+        function updateTransparency(selectedImageSrc) {
+            galleryItems.forEach(item => {
+                if (item.dataset.src === selectedImageSrc) {
+                    item.classList.remove('inactive-photo');
+                } else {
+                    item.classList.add('inactive-photo');
+                }
+            });
+        }
+
+        galleryItems.forEach(item => {
+            item.addEventListener('click', function() {
+                mainImage.src = this.dataset.src;
+                updateTransparency(this.dataset.src);
+            });
+        });
+
+        // Set initial transparency
+        updateTransparency(mainImage.src);
+
+        // Zoom effect following mouse
+        const mainPhoto = document.querySelector('.main-photo');
+
+        mainPhoto.addEventListener('mousemove', function(e) {
+            const rect = mainPhoto.getBoundingClientRect();
+            const x = e.clientX - rect.left; // X position within the element
+            const y = e.clientY - rect.top; // Y position within the element
+            const percentX = x / rect.width * 100;
+            const percentY = y / rect.height * 100;
+
+            mainImage.style.transformOrigin = `${percentX}% ${percentY}%`;
+            mainImage.style.transform = `scale(5)`;
+        });
+
+        mainPhoto.addEventListener('mouseleave', function() {
+            mainImage.style.transform = `scale(1)`;
         });
     });
 </script>

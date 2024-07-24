@@ -37,7 +37,8 @@
                                         <h6 class="fw-semibold mb-0">{{ $loop->iteration }}</h6>
                                     </td>
                                     <td class="border-bottom-2">
-                                        <img src="{{ asset('storage/products/' . $product->foto) }}" style="width:80px">
+                                        <img src="{{ asset('storage/products/thumbnail/' . $product->thumbnail) }}"
+                                            style="width:80px">
                                     </td>
                                     <td class="border-bottom-2">
                                         <p class="mb-0 fw-normal">{{ $product->nama }}</p>

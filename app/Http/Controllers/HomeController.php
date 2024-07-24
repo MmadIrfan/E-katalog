@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Home;
 use App\Models\Products;
 use App\Models\Blogs;
+use App\Models\Testimonials;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class HomeController extends Controller
 {
@@ -14,24 +16,37 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $products = Products::all();
-        return view("home.home", ['products' => $products]);
+        $products = Products::orderBy('created_at', 'desc')->get();
+        $testimonials = Testimonials::orderBy('created_at', 'desc')->get();
+        $blogs = Blogs::all();
+        return view("home.home", ['products' => $products, 'blogs' => $blogs, 'testimonials'=>$testimonials]);
     }
 
     public function produk()
     {
-        $products = Products::all();
-        return view("home.productspage", ['products' => $products]);
+        $products = Products::orderBy('created_at', 'desc')->get();
+        $blogs = Blogs::all();
+        return view("home.productspage", ['products' => $products, 'blogs' => $blogs]);
     }
 
     public function blog()
     {
-        return view("home.blogs");
+        $products = Products::all();
+        $blogs = Blogs::all();
+        return view("home.blogs", ['products' => $products, 'blogs' => $blogs]);
     }
 
     public function contact()
     {
-        return view("home.contact");
+        $products = Products::all();
+        $blogs = Blogs::all();
+        return view("home.contact", ['products' => $products, 'blogs' => $blogs]);
+    }
+    public function about()
+    {
+        $products = Products::all();
+        $blogs = Blogs::all();
+        return view("home.about", ['products' => $products, 'blogs' => $blogs]);
     }
 
     /**
@@ -55,8 +70,16 @@ class HomeController extends Controller
      */
     public function show(Home $home, $id)
     {
+        // $products = Cache::remember('product_'.$id, 3600, function () use ($id) {
+        //     return Products::findOrFail($id);
+        // });
         $products = Products::findOrFail($id);
         return view('home.detailproduct', compact('products'));
+    }
+    public function showblog(Home $home, $id)
+    {
+        $blogs = Blogs::findOrFail($id);
+        return view('home.detailblog', compact('blogs', 'products'));
     }
 
     /**

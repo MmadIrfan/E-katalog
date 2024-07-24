@@ -5,17 +5,31 @@
 @section('hero-image')
     <div class="col-lg-4">
         <div class="hero-img-wrap">
-            <img src="{{ asset('storage/products/' . $products->foto) }}" class="img-fluid" />
+            <img src="{{ asset('storage/products/thumbnail/' . $products->thumbnail) }}" class="img-fluid" />
         </div>
     </div>
 @endsection
 @section('content')
-    <div id="product-section" class="untree_co-section product-section before-footer-section">
+    <div id="product-section" class="product-section">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 my-5">
-                    <img src="{{ asset('storage/products/' . $products->foto) }}" alt="{{ $products->nama }}"
-                        class="img-fluid">
+                <div class="col-md-6">
+                    <div class="gallery">
+                        <!-- Foto Default -->
+                        <div class="main-photo">
+                            <img id="main-image" src="{{ asset('storage/products/' . json_decode($products->foto)[0]) }}"
+                                alt="{{ $products->nama }}" class="img-fluid">
+                        </div>
+                    </div>
+                    <!-- Foto Gallery -->
+                    <div class="gallery-items">
+                        @foreach (json_decode($products->foto) as $foto)
+                            <div class="gallery-item">
+                                <img src="{{ asset('storage/products/' . $foto) }}" alt="{{ $products->nama }}"
+                                    class="img-fluid gallery-img" data-src="{{ asset('storage/products/' . $foto) }}">
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
                 <div class="col-md-6">
                     <h2>{{ $products->nama }}</h2>

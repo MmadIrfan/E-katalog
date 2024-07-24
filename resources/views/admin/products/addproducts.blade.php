@@ -18,9 +18,16 @@
                                                 value="{{ old('nama') }}" name="nama">
                                         </div>
                                         <div class="mb-3">
-                                            <label type="file" class="form-label">Photo</label>
-                                            <input type="file" class="form-control @error('foto') is-invalid @enderror"
-                                                name="foto">
+                                            <label class="form-label">Thumbnail</label>
+                                            <input type="file"
+                                                class="form-control @error('thumbnail') is-invalid @enderror"
+                                                name="thumbnail">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Photos (Max 3)</label>
+                                            <input type="file" class="form-control @error('foto.*') is-invalid @enderror"
+                                                name="foto[]" multiple accept="image/*" max="3">
+                                            <small class="text-muted">You can select up to 3 photos</small>
                                         </div>
                                         <div class="mb-3">
                                             <label for="deskripsi" class="form-label">Description</label>
@@ -57,6 +64,14 @@
                                         <option value="Soffa">Soffa</option>
                                         <option value="Storage">Storage</option>
                                         <option value="Others">Others</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="populer" class="form-label">Popular ?</label>
+                                    <select type="text" class="form-select @error('populer') is-invalid @enderror"
+                                        value="{{ old('populer') }}" name="populer">
+                                        <option value="Tidak">No</option>
+                                        <option value="Iya">Yes</option>
                                     </select>
                                 </div>
                             </div>
