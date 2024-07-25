@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title') | Admin AR</title>
     <link rel="shortcut icon" type="image/png" href="{{ asset('images/Logo.png') }}" />
@@ -38,7 +39,8 @@
                             <span class="hide-menu">Home</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/dashboard" aria-expanded="false">
+                            <a class="sidebar-link {{ Request::is('testimoni*') ? 'active' : '' }}" href="/dashboard"
+                                aria-expanded="false">
                                 <span>
                                     <i class="ti ti-layout-dashboard"></i>
                                 </span>
@@ -59,7 +61,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="./ui-alerts.html" aria-expanded="false">
+                            <a class="sidebar-link {{ Request::is('updateabout*') ? 'active' : '' }}" href="/updateabout" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-alert-circle"></i>
                                 </span>
@@ -167,5 +169,49 @@
 <script src="{{ asset('admin/src/assets/js/sidebarmenu.js') }}"></script>
 <script src="{{ asset('admin/src/assets/js/app.min.js') }}"></script>
 <script src="{{ asset('admin/src/assets/libs/simplebar/dist/simplebar.js') }}"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const galleryItems = document.querySelectorAll('.gallery-item img');
+        const mainImage = document.getElementById('main-image');
 
+        // Function to update transparency
+        function updateTransparency(selectedImageSrc) {
+            galleryItems.forEach(item => {
+                if (item.dataset.src === selectedImageSrc) {
+                    item.classList.remove('inactive-photo');
+                } else {
+                    item.classList.add('inactive-photo');
+                }
+            });
+        }
+
+        galleryItems.forEach(item => {
+            item.addEventListener('click', function() {
+                mainImage.src = this.dataset.src;
+                updateTransparency(this.dataset.src);
+            });
+        });
+
+        // Set initial transparency
+        updateTransparency(mainImage.src);
+
+        // Zoom effect following mouse
+        const mainPhoto = document.querySelector('.main-photo');
+
+        mainPhoto.addEventListener('mousemove', function(e) {
+            const rect = mainPhoto.getBoundingClientRect();
+            const x = e.clientX - rect.left; // X position within the element
+            const y = e.clientY - rect.top; // Y position within the element
+            const percentX = x / rect.width * 100;
+            const percentY = y / rect.height * 100;
+
+            mainImage.style.transformOrigin = `${percentX}% ${percentY}%`;
+            mainImage.style.transform = `scale(5)`;
+        });
+
+        mainPhoto.addEventListener('mouseleave', function() {
+            mainImage.style.transform = `scale(1)`;
+        });
+    });
+</script>
 </html>

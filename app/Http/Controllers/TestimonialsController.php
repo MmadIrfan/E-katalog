@@ -15,7 +15,7 @@ class TestimonialsController extends Controller
     public function index()
     {
         $testimonials = Testimonials::all();
-        return view("home.home", ['testimonials' => $testimonials]);
+        return view("admin.dashboard", ['testimonials' => $testimonials]);
     }
 
     /**

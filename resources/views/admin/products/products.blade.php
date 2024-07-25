@@ -14,19 +14,19 @@
                                     <h6 class="fw-semibold mb-0">No</h6>
                                 </th>
                                 <th class="border-bottom-2">
-                                    <h6 class="fw-semibold mb-0">Foto produk</h6>
+                                    <h6 class="fw-semibold mb-0">Product Picture</h6>
                                 </th>
                                 <th class="border-bottom-2">
-                                    <h6 class="fw-semibold mb-0">Nama produk</h6>
+                                    <h6 class="fw-semibold mb-0">Product Name</h6>
                                 </th>
                                 <th class="border-bottom-2">
-                                    <h6 class="fw-semibold mb-0">Waktu Upload</h6>
+                                    <h6 class="fw-semibold mb-0">Upload at</h6>
                                 </th>
                                 <th class="border-bottom-2">
-                                    <h6 class="fw-semibold mb-0">Kategori</h6>
+                                    <h6 class="fw-semibold mb-0">Category</h6>
                                 </th>
                                 <th class="border-bottom-2">
-                                    <h6 class="fw-semibold mb-0">Aksi</h6>
+                                    <h6 class="fw-semibold mb-0">Action</h6>
                                 </th>
                             </tr>
                         </thead>
@@ -73,7 +73,7 @@
                                         </div>
                                     </td>
                                     <td class="border-bottom-2">
-                                        <a href="#">
+                                        <a href="{{ route('updateproducts.show', $product->id) }}">
                                             <button type="button" class="btn btn-primary m-1 ti ti-eye fs-4"></button>
                                         </a>
                                         <a href="{{ route('updateproducts.edit', $product->id) }}">

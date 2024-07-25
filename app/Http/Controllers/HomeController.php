@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Home;
 use App\Models\Products;
 use App\Models\Blogs;
+use App\Models\About;
 use App\Models\Testimonials;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -45,8 +46,8 @@ class HomeController extends Controller
     public function about()
     {
         $products = Products::all();
-        $blogs = Blogs::all();
-        return view("home.about", ['products' => $products, 'blogs' => $blogs]);
+        $about = About::all();
+        return view("home.about", ['products' => $products, 'about' => $about]);
     }
 
     /**
@@ -78,8 +79,9 @@ class HomeController extends Controller
     }
     public function showblog(Home $home, $id)
     {
+        $products = Products::all();
         $blogs = Blogs::findOrFail($id);
-        return view('home.detailblog', compact('blogs', 'products'));
+        return view('home.detailblog', ['blogs' => $blogs, 'products' => $products]);
     }
 
     /**

@@ -5,16 +5,15 @@ namespace App\Livewire\Admin;
 use Livewire\Component;
 use App\Models\ChatSession;
 use App\Models\Chat;
-use Livewire\Attributes\On;
 
 class ChatUser extends Component
 {
     public $chatSession;
     public $message = '';
-    public $chats;  
+    public $chats;
 
-    #[On('loadChat')] 
-    
+    protected $listeners = ['loadChat'];
+
     public function loadChat($chatSessionId)
     {
         $this->chatSession = ChatSession::findOrFail($chatSessionId);
@@ -43,6 +42,22 @@ class ChatUser extends Component
         $this->message = '';
         $this->loadChats();
         $this->dispatch('chatUpdated');
+    }
+
+    public function getListeners()
+    {
+        $listeners = ['loadChat'];
+        
+        if ($this->chatSession) {
+            $listeners["echo-private:chat.{$this->chatSession->id},ChatMessageSent"] = 'notifyNewMessage';
+        }
+        
+        return $listeners;
+    }
+
+    public function notifyNewMessage($event)
+    {
+        $this->loadChats();
     }
 
     public function render()

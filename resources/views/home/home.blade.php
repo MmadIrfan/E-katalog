@@ -158,7 +158,7 @@
                             Every creation is distinctive, reflecting your personality and aesthetic taste.
                         </li>
                     </ul>
-                    <p><a herf="about" class="btn">Explore</a></p>
+                    <p><a href="/about" class="btn">Explore</a></p>
                 </div>
             </div>
         </div>

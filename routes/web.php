@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\BlogsController;
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\TestimonialsController;
 use App\Models\Products;
 use App\Models\Testimonials;
@@ -31,6 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('/updateproducts', ProductsController::class);
     Route::resource('/updateblogs', BlogsController::class);
+    Route::resource('/updateabout', AboutController::class);
     Route::resource('/testimoni', TestimonialsController::class);
     Route::get('/chats', function () {
         return view('livewire.admin.chats');

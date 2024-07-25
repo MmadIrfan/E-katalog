@@ -249,6 +249,8 @@
     @livewireScripts
 </body>
 
+<script src="{{ asset('home/js/email-preview.js') }}"></script>
+<script src="{{ asset('home/js/buy-email.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
 <script src="{{ asset('home/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('home/js/tiny-slider.js') }}"></script>
@@ -272,7 +274,6 @@
         });
     });
 </script>
-<script src="{{ asset('home/js/email-preview.js') }}"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const galleryItems = document.querySelectorAll('.gallery-item img');

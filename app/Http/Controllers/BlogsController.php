@@ -50,9 +50,10 @@ class BlogsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Blogs $blogs)
+    public function show(Blogs $blogs, $id)
     {
-        //
+        $blogs = Blogs::findOrFail($id);
+        return view('admin.blogs.showblogs', compact('blogs'));
     }
 
     /**

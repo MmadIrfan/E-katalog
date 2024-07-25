@@ -4,7 +4,7 @@ function previewEmail(event) {
     var name = document.getElementById("name").value;
     var email = document.getElementById("email").value;
 
-    var subject = encodeURIComponent("New Inquiry about Rattan Furniture");
+    var subject = encodeURIComponent("Subscribe to Newsletter");
     var body = encodeURIComponent(`
 Dear Aesthetic Rattan Team,
 

@@ -55,11 +55,15 @@
                         </tbody>
                     </table>
                     <p>
-                        <a href="mailto:marketing@aestheticrattan.com?subject=Inquiry%20about%20Rattan%20Furniture&body=Hello,%0D%0AI%20am%20interested%20in%20learning%20more%20about%20*{{ urlencode($products->nama) }}*.%0D%0AThank%20you!"
-                            class="btn btn-primary"><span class="me-1"><img
-                                    src="{{ asset('home/images/envelope-outline.svg') }}" alt="Image"
-                                    class="img-fluid"></span><span>Buy via email</span></a>
-                        <a href="/products" class="btn btn-secondary"><span>Back to Products</span></a>
+                    <form id="buyForm" class="d-inline">
+                        <input type="hidden" id="productName" value="{{ $products->nama }}">
+                        <button type="submit" class="btn btn-primary">
+                            <span class="me-1"><img src="{{ asset('home/images/envelope-outline.svg') }}" alt="Image"
+                                    class="img-fluid"></span>
+                            <span>Buy via email</span>
+                        </button>
+                    </form>
+                    <a href="/products" class="btn btn-secondary"><span>Back to Products</span></a>
                     </p>
                 </div>
             </div>

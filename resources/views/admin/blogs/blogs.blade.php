@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <a href="{{ route('updateblogs.create') }}"><button type="button" class="btn btn-primary m-1">Tambah
+                    <a href="{{ route('updateblogs.create') }}"><button type="button" class="btn btn-primary m-1">Add
                             Blog</button></a>
                     <div class="table-responsive">
                         <table class="table text-nowrap mb-0 align-middle">
@@ -35,7 +35,7 @@
                                             <h6 class="fw-semibold mb-0">{{ $loop->iteration }}</h6>
                                         </td>
                                         <td class="border-bottom-2">
-                                            <p class="mb-0 fw-normal">{{ $blog->judul }}</p>
+                                            <p class="mb-0 fw-normal">{{ substr($blog->judul, 0, 50) . '...' }}</p>
                                         </td>
                                         <td class="border-bottom-2">
                                             <img src="{{ asset('storage/blogs/' . $blog->foto) }}" style="width:80px">
@@ -45,7 +45,7 @@
                                                 {{ \Carbon\Carbon::parse($blog->created_at)->format('d F Y') }}</p>
                                         </td>
                                         <td class="border-bottom-2">
-                                            <a href="#">
+                                            <a href="{{ route('updateblogs.show', $blog->id) }}">
                                                 <button type="button" class="btn btn-primary m-1 ti ti-eye fs-4"></button>
                                             </a>
                                             <a href="{{ route('updateblogs.edit', $blog->id) }}">

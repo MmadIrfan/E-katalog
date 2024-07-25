@@ -75,40 +75,19 @@
             </div>
             <div class="row mt-5">
                 <div class="col-12">
-                    <h2 class="section-title text-center mb-5">Our Gallery</h2>
+                    <h1 class="section-title text-center mb-5">Our Gallery</h1>
                 </div>
             </div>
             <div class="row gallery-row">
-                <div class="col-md-4 mb-4">
-                    <a data-fancybox data-src="{{ asset('images/OWL_0094.JPG') }}" data-caption="Gallery Image">
-                        <img src="{{ asset('images/OWL_0094.JPG') }}" alt="" class="img-fluid rounded" />
-                    </a>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <a data-fancybox data-src="{{ asset('images/OWL_0094.JPG') }}" data-caption="Gallery Image">
-                        <img src="{{ asset('images/OWL_0094.JPG') }}" alt="" class="img-fluid rounded" />
-                    </a>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <a data-fancybox data-src="{{ asset('images/OWL_0094.JPG') }}" data-caption="Gallery Image">
-                        <img src="{{ asset('images/OWL_0094.JPG') }}" alt="" class="img-fluid rounded" />
-                    </a>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <a data-fancybox data-src="{{ asset('images/OWL_0094.JPG') }}" data-caption="Gallery Image">
-                        <img src="{{ asset('images/OWL_0094.JPG') }}" alt="" class="img-fluid rounded" />
-                    </a>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <a data-fancybox data-src="{{ asset('images/OWL_0094.JPG') }}" data-caption="Gallery Image">
-                        <img src="{{ asset('images/OWL_0094.JPG') }}" alt="" class="img-fluid rounded" />
-                    </a>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <a data-fancybox data-src="{{ asset('images/OWL_0094.JPG') }}" data-caption="Gallery Image">
-                        <img src="{{ asset('images/OWL_0094.JPG') }}" alt="" class="img-fluid rounded" />
-                    </a>
-                </div>
+                @foreach ($about as $about)
+                    <div class="col-md-4 mb-4">
+                        <a data-fancybox data-src="{{ asset('storage/gallery/' . $about->foto) }}"
+                            data-caption="{{ $about->keterangan }}">
+                            <img src="{{ asset('storage/gallery/' . $about->foto) }}" alt=""
+                                class="img-fluid rounded" />
+                        </a>
+                    </div>
+                @endforeach
             </div>
         </div>
     </section>
