@@ -30,11 +30,11 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Created At</label>
-                                <p>{{ $testimonials->created_at->format('d M Y H:i') }}</p>
+                                <p>{{ $testimonials->created_at->setTimezone('Asia/Jakarta')->format('d M Y H:i') }}</p>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Updated At</label>
-                                <p>{{ $testimonials->updated_at->format('d M Y H:i') }}</p>
+                                <p>{{ $testimonials->updated_at->setTimezone('Asia/Jakarta')->format('d M Y H:i') }}</p>
                             </div>
                         </div>
                     </div>

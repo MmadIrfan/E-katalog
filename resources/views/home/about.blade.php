@@ -14,12 +14,10 @@
                 </div>
                 <div class="col-lg-6">
                     <h2 class="section-title">About Aesthetic Rattan</h2>
-                    <p class="lead">For over two decades, we've been weaving dreams into reality, crafting exquisite
-                        rattan
-                        furniture that brings nature's beauty into your homes.</p>
-                    <p>From humble beginnings to becoming a leading force in the rattan furniture industry, our journey has
-                        been nothing short of remarkable. We've dedicated ourselves to preserving traditional craftsmanship
-                        while embracing modern design sensibilities.</p>
+                    <p class="lead">23 YEARS IN THE RATTAN FURNITURE BUSINESS</p>
+                    <p>For over two decades, our journey in the rattan furniture industry has been nothing short of
+                        remarkable. From humble beginnings to becoming a leading force, we’ve woven together a legacy of
+                        quality, artistry, and customer satisfaction that stands the test of time.</p>
                 </div>
             </div>
 
@@ -61,16 +59,16 @@
                         class="img-fluid">
                 </div>
                 <div class="col-lg-6 order-lg-1">
-                    <h3 class="mb-4">Our Commitment to Excellence</h3>
-                    <p>At Aesthetic Rattan, we believe that furniture is more than just functional – it's an expression of
-                        style and a connection to nature. Our commitment to excellence drives us to:</p>
-                    <ul class="custom-list mb-4">
-                        <li>Source the highest quality rattan</li>
-                        <li>Employ skilled local artisans</li>
-                        <li>Innovate in design and functionality</li>
-                        <li>Prioritize customer satisfaction</li>
-                    </ul>
-                    <a href="/products" class="btn btn-primary">Explore Our Collection</a>
+                    <h2 class="mb-4">Introduce Rattan Industries</h2>
+                    <p>Once a small, family-run business, the rattan furniture industry blossomed into an empire over the
+                        years. Their artisans mastered the art of crafting exquisite pieces that blended elegance with
+                        nature’s grace. As demand soared, the company embraced sustainability, ensuring rattan sourcing was
+                        responsible and eco-friendly.</p>
+                    <p>With 23 years of expertise, they became a beacon of craftsmanship and innovation, leading the way in
+                        the furniture world. The story of their success was woven by the passion of dedicated artisans, the
+                        loyalty of clients, and the enduring beauty of rattan.</p>
+                    <a href="https://drive.google.com/file/d/1j1CEcYIx0pqV5zLfT-ojnvNDYxlT2o_F/view"
+                        class="btn btn-primary">More About Our Company</a>
                 </div>
             </div>
             <div class="row mt-5">

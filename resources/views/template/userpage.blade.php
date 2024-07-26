@@ -174,9 +174,10 @@
                         <li><a
                                 href="mailto:marketing@aestheticrattan.com?subject=Inquiry%20about%20Rattan%20Furniture&body=Hello,%0D%0AI%20am%20interested%20in%20learning%20more%20about%20your%20rattan%20furniture.%0D%0AThank%20you!"><span
                                     class="far fa-brands fa-envelope"></span></a></li>
+                        <li><a href="https://wa.me/6282319677113 "><span class="fa fa-brands fa-whatsapp"></span></a>
+                        </li>
                         <li><a href="https://www.instagram.com/aesthetic_rattan/"><span
-                                    class="fa fa-brands fa-whatsapp"></span></a></li>
-                        <li><a href="https://wa.me/6282319677113"><span class="fa fa-brands fa-instagram"></span></a>
+                                    class="fa fa-brands fa-instagram"></span></a>
                         </li>
                     </ul>
                 </div>
@@ -193,23 +194,6 @@
 
                         <div class="col-6 col-sm-6 col-md-3">
                             <ul class="list-unstyled">
-                                <li><a href="#">Support</a></li>
-                                <li><a href="#">Knowledge base</a></li>
-                                <li><a href="#">Live chat</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="col-6 col-sm-6 col-md-3">
-                            <ul class="list-unstyled">
-                                <li><a href="#">Jobs</a></li>
-                                <li><a href="#">Our team</a></li>
-                                <li><a href="#">Leadership</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="col-6 col-sm-6 col-md-3">
-                            <ul class="list-unstyled">
                                 @foreach ($products->take(4) as $product)
                                     @if ($product->populer == 'Iya')
                                         <li><a href="{{ route('home.show', $product->id) }}">{{ $product->nama }}</a>
@@ -217,6 +201,19 @@
                                     @endif
                                 @endforeach
                             </ul>
+                        </div>
+
+                        <div class="col-6 col-sm-6 col-md-3">
+                            <ul class="list-unstyled">
+                                @foreach ($products->take(3) as $product)
+                                    <li><a href="{{ route('home.show', $product->id) }}">{{ $product->nama }}</a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+
+                        <div class="col-6 col-sm-6 col-md-3">
+                            <img src="{{ asset('images/Logo.png') }}" width="200" alt="" />
                         </div>
                     </div>
                 </div>
@@ -276,46 +273,72 @@
 </script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const galleryItems = document.querySelectorAll('.gallery-item img');
         const mainImage = document.getElementById('main-image');
+        const galleryItems = document.querySelectorAll('.gallery-item img');
 
-        // Function to update transparency
-        function updateTransparency(selectedImageSrc) {
+        if (mainImage && galleryItems.length > 0) {
+            // Function to update transparency
+            function updateTransparency(selectedImageSrc) {
+                galleryItems.forEach(item => {
+                    if (item.dataset.src === selectedImageSrc) {
+                        item.classList.remove('inactive-photo');
+                    } else {
+                        item.classList.add('inactive-photo');
+                    }
+                });
+            }
+
             galleryItems.forEach(item => {
-                if (item.dataset.src === selectedImageSrc) {
-                    item.classList.remove('inactive-photo');
-                } else {
-                    item.classList.add('inactive-photo');
-                }
+                item.addEventListener('click', function() {
+                    mainImage.src = this.dataset.src;
+                    updateTransparency(this.dataset.src);
+                });
             });
+
+            // Set initial transparency
+            if (mainImage.src) {
+                updateTransparency(mainImage.src);
+            }
+
+            // Zoom effect following mouse
+            const mainPhoto = document.querySelector('.main-photo');
+            if (mainPhoto) {
+                mainPhoto.addEventListener('mousemove', function(e) {
+                    const rect = mainPhoto.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const percentX = x / rect.width * 100;
+                    const percentY = y / rect.height * 100;
+
+                    mainImage.style.transformOrigin = `${percentX}% ${percentY}%`;
+                    mainImage.style.transform = `scale(5)`;
+                });
+
+                mainPhoto.addEventListener('mouseleave', function() {
+                    mainImage.style.transform = `scale(1)`;
+                });
+            }
         }
 
-        galleryItems.forEach(item => {
-            item.addEventListener('click', function() {
-                mainImage.src = this.dataset.src;
-                updateTransparency(this.dataset.src);
+        // Kode untuk filter kategori
+        const categorySelect = document.querySelector('select[name="kategori"]');
+        const productContainer = document.querySelector('#products-container');
+
+        if (categorySelect && productContainer) {
+            categorySelect.addEventListener('change', function() {
+                const selectedCategory = this.value;
+
+                fetch(`{{ route('home.produk') }}?kategori=${selectedCategory}`, {
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        productContainer.innerHTML = data.html;
+                    })
+                    .catch(error => console.error('Error:', error));
             });
-        });
-
-        // Set initial transparency
-        updateTransparency(mainImage.src);
-
-        // Zoom effect following mouse
-        const mainPhoto = document.querySelector('.main-photo');
-
-        mainPhoto.addEventListener('mousemove', function(e) {
-            const rect = mainPhoto.getBoundingClientRect();
-            const x = e.clientX - rect.left; // X position within the element
-            const y = e.clientY - rect.top; // Y position within the element
-            const percentX = x / rect.width * 100;
-            const percentY = y / rect.height * 100;
-
-            mainImage.style.transformOrigin = `${percentX}% ${percentY}%`;
-            mainImage.style.transform = `scale(5)`;
-        });
-
-        mainPhoto.addEventListener('mouseleave', function() {
-            mainImage.style.transform = `scale(1)`;
-        });
+        }
     });
 </script>

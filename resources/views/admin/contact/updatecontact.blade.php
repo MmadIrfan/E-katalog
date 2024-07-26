@@ -8,23 +8,25 @@
                 @method('PUT')
                 <div class="card w-100">
                     <div class="card-body">
-                        <h5 class="card-title fw-semibold mb-4">Product</h5>
+                        <h5 class="card-title fw-semibold mb-4">Contact</h5>
                         <div class="card">
                             <div class="card-body">
-                                <div class="mb-3">
-                                    <label for="alamat" class="form-label">Address</label>
-                                    <input type="text" class="form-control @error('alamat') is-invalid @enderror"
-                                        value="{{ old('alamat', $contact->alamat) }}" name="alamat">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="text" class="form-control @error('email') is-invalid @enderror"
-                                        value="{{ old('email', $contact->email) }}" name="email">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="hp" class="form-label">Telephone</label>
-                                    <input type="text" class="form-control @error('hp') is-invalid @enderror"
-                                        value="{{ old('hp', $contact->hp) }}" name="hp">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label for="alamat" class="form-label">Address</label>
+                                        <input type="text" class="form-control @error('alamat') is-invalid @enderror"
+                                            value="{{ old('alamat', $contact->alamat) }}" name="alamat">
+                                    </div>
+                                    <div class="col-4">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="text" class="form-control @error('email') is-invalid @enderror"
+                                            value="{{ old('email', $contact->email) }}" name="email">
+                                    </div>
+                                    <div class="col-4">
+                                        <label for="hp" class="form-label">Telephone</label>
+                                        <input type="text" class="form-control @error('hp') is-invalid @enderror"
+                                            value="{{ old('hp', $contact->hp) }}" name="hp">
+                                    </div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="gmaps" class="form-label">Embed maps</label>

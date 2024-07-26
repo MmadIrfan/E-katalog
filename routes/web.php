@@ -13,7 +13,7 @@ use App\Models\Testimonials;
 use App\Http\Controllers\EmailController;
 
 Route::get('/', [HomeController::class,'index']);
-Route::get('/products', [HomeController::class,'produk']);
+Route::get('/products', [HomeController::class,'produk'])->name('home.produk');
 Route::get('/products/{id}', [HomeController::class, 'show'])->name('home.show');
 Route::get('/blogs', [HomeController::class,'blog']);
 Route::get('/blogs/{id}', [HomeController::class, 'showblog'])->name('home.showblog');

@@ -56,12 +56,12 @@
                         <div class="col-6 col-md-6">
                             <div class="feature">
                                 <div class="icon">
-                                    <img src="home/images/truck.svg" alt="Image" class="imf-fluid" />
+                                    <img src="{{ asset('home/images/loyalty.svg') }}" alt="Image" class="img-fluid" />
                                 </div>
-                                <h3>Responsibility</h3>
+                                <h3>Loyalty</h3>
                                 <p>
-                                    We take our responsibilities seriously, ensuring every project is completed with
-                                    meticulous care and attention to detail.
+                                    maintain protected goods so as to minimize other companies in copying the design of our
+                                    customer products
                                 </p>
                             </div>
                         </div>
@@ -69,12 +69,11 @@
                         <div class="col-6 col-md-6">
                             <div class="feature">
                                 <div class="icon">
-                                    <img src="home/images/bag.svg" alt="Image" class="imf-fluid" />
+                                    <img src="{{ asset('home/images/efficiency.svg') }}" alt="Image" class="img-fluid" />
                                 </div>
-                                <h3>Professional</h3>
+                                <h3>Efficiency</h3>
                                 <p>
-                                    Our team of professionals is well-trained and experienced, bringing extensive knowledge
-                                    and expertise to every project.
+                                    work on production in a timely manner according to the agreement and shipment schedule
                                 </p>
                             </div>
                         </div>
@@ -82,12 +81,13 @@
                         <div class="col-6 col-md-6">
                             <div class="feature">
                                 <div class="icon">
-                                    <img src="home/images/support.svg" alt="Image" class="imf-fluid" />
+                                    <img src="{{ asset('home/images/global-business-partner.svg') }}" alt="Image"
+                                        class="img-fluid" />
                                 </div>
                                 <h3>Commitment</h3>
                                 <p>
-                                    We are committed to delivering superior services and solutions tailored to our clients'
-                                    unique needs.
+                                    keeping the promise of the agreement in accordance with the agreement of both parties in
+                                    placing the order, production quality, and timeliness.
                                 </p>
                             </div>
                         </div>
@@ -95,15 +95,15 @@
                         <div class="col-6 col-md-6">
                             <div class="feature">
                                 <div class="icon">
-                                    <img src="home/images/return.svg" alt="Image" class="imf-fluid" />
+                                    <img src="home/images/return.svg" alt="Image" class="img-fluid" />
                                 </div>
-                                <h3>Experienced</h3>
+                                <h3>Competitive Price</h3>
                                 <p>
-                                    With many years in the industry, our team possesses the skills and expertise to tackle
-                                    any challenge.
+                                    We provide the best price because we produce from frame to finishing in the factory.
                                 </p>
                             </div>
                         </div>
+
                     </div>
                 </div>
 

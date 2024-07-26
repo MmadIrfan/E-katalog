@@ -24,9 +24,17 @@ class HomeController extends Controller
         return view("home.home", ['products' => $products, 'blogs' => $blogs, 'testimonials'=>$testimonials]);
     }
 
-    public function produk()
+    public function produk(Request $request)
     {
-        $products = Products::orderBy('created_at', 'desc')->get();
+        $products = Products::when($request->kategori, function ($query, $kategori) {
+            return $query->where('kategori', $kategori);
+        })->orderBy('created_at', 'desc')->get();
+
+        if ($request->ajax()) {
+            $html = view("home.productspage_partial", compact('products'))->render();
+            return response()->json(['html' => $html]);
+        }
+        
         $blogs = Blogs::all();
         return view("home.productspage", ['products' => $products, 'blogs' => $blogs]);
     }
