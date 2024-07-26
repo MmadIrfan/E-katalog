@@ -57,17 +57,44 @@ class AboutController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(About $about)
+    public function edit(About $about, $id)
     {
-        //
+        $about = About::findOrFail($id);
+        return view('admin.about.editaboutus', compact('about'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, About $about)
+    public function update(Request $request, About $about, $id)
     {
-        //
+        $about = About::find($id);
+        $request->validate([
+            'foto'      => 'nullable|image|mimes:png,jpg,jpeg',
+            'keterangan' => 'required',
+        ]);
+
+        if ($request->hasFile('foto')) {
+            // Delete old image
+            Storage::delete('public/gallery/'.$about->foto);
+
+            // Upload new image
+            $foto = $request->file('foto');
+            $foto->storeAs('public/gallery', $foto->hashName());
+
+            // Update with new image
+            $about->update([
+                'foto'       => $foto->hashName(),
+                'keterangan' => $request->keterangan,
+            ]);
+        } else {
+            // Update without changing the image
+            $about->update([
+                'keterangan' => $request->keterangan,
+            ]);
+        }
+
+        return redirect()->route('updateabout.index')->with('success', 'About updated successfully.');
     }
 
     /**

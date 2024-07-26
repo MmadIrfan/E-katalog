@@ -8,6 +8,8 @@
     <title>@yield('title') | Admin AR</title>
     <link rel="shortcut icon" type="image/png" href="{{ asset('images/Logo.png') }}" />
     <link rel="stylesheet" href="{{ asset('admin/src/assets/css/styles.min.css') }}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
     @yield('head')
     @livewireStyles
 
@@ -61,7 +63,8 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link {{ Request::is('updateabout*') ? 'active' : '' }}" href="/updateabout" aria-expanded="false">
+                            <a class="sidebar-link {{ Request::is('updateabout*') ? 'active' : '' }}"
+                                href="/updateabout" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-alert-circle"></i>
                                 </span>
@@ -78,7 +81,8 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="./ui-card.html" aria-expanded="false">
+                            <a class="sidebar-link {{ Request::is('updatecontact*') ? 'active' : '' }}"
+                                href="/updatecontact" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-address-book"></i>
                                 </span>
@@ -113,9 +117,9 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link nav-icon-hover" href="javascript:void(0)">
-                                <i class="ti ti-bell-ringing"></i>
-                                <div class="notification bg-primary rounded-circle"></div>
+                            <a class="nav-link nav-icon-hover" href="/">
+                                <i class="ti ti-home"></i>
+                                {{-- <div class="notification bg-primary rounded-circle"></div> --}}
                             </a>
                         </li>
                     </ul>
@@ -125,8 +129,8 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2"
                                     data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="{{ asset('admin/src/assets/images/profile/user-1.jpg') }}" alt=""
-                                        width="35" height="35" class="rounded-circle">
+                                    <img src="{{ asset('admin/src/assets/images/profile/user-1.jpg') }}"
+                                        alt="" width="35" height="35" class="rounded-circle">
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up"
                                     aria-labelledby="drop2">
@@ -163,12 +167,35 @@
         </div>
     </div>
     @livewireScripts
+    @stack('scripts')
 </body>
 <script src="{{ asset('admin/src/assets/libs/jquery/dist/jquery.min.js') }}"></script>
 <script src="{{ asset('admin/src/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('admin/src/assets/js/sidebarmenu.js') }}"></script>
 <script src="{{ asset('admin/src/assets/js/app.min.js') }}"></script>
 <script src="{{ asset('admin/src/assets/libs/simplebar/dist/simplebar.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    @if (session('success'))
+        Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: '{{ session('success') }}',
+            showConfirmButton: false,
+            timer: 1500
+        });
+    @endif
+
+    @if (session('error'))
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: '{{ session('error') }}',
+            showConfirmButton: false,
+            timer: 1500
+        });
+    @endif
+</script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const galleryItems = document.querySelectorAll('.gallery-item img');
@@ -214,4 +241,5 @@
         });
     });
 </script>
+
 </html>

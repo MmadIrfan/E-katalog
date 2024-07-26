@@ -59,17 +59,48 @@ class BlogsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Blogs $blogs)
+    public function edit(Blogs $blogs, $id)
     {
-        //
+        $blog = Blogs::findOrFail($id);
+        return view('admin.blogs.editblogs', compact('blog'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Blogs $blogs)
+    public function update(Request $request, Blogs $blogs, $id)
     {
-        //
+        $blog = Blogs::findOrFail($id);
+
+        $request->validate([
+            'judul'   => 'required',
+            'foto'    => 'image|mimes:png,jpg,jpeg',
+            'konten' => 'required',
+        ]);
+
+        if ($request->hasFile('foto')) {
+            // Delete old image
+            Storage::delete('public/blogs/'.$blog->foto);
+
+            // Upload new image
+            $foto = $request->file('foto');
+            $foto->storeAs('public/blogs', $foto->hashName());
+
+            // Update blog with new image
+            $blog->update([
+                'judul'   => $request->judul,
+                'foto'    => $foto->hashName(),
+                'konten'  => $request->konten,
+            ]);
+        } else {
+            // Update blog without changing the image
+            $blog->update([
+                'judul'   => $request->judul,
+                'konten'  => $request->konten,
+            ]);
+        }
+
+        return redirect()->route('updateblogs.index')->with('success', 'Blog updated successfully.');
     }
 
     /**

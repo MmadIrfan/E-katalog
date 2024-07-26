@@ -51,10 +51,10 @@
                                         </td>
                                         <td class="border-bottom-2">
                                             <p class="mb-0 fw-normal">
-                                                {{ \Carbon\Carbon::parse($testimonial->created_at)->format('d F Y') }}</p>
+                                                {{ \Carbon\Carbon::parse($testimonial->created_at)->format('d F Y') }} </p>
                                         </td>
                                         <td class="border-bottom-2">
-                                            <a href="#">
+                                            <a href="{{ route('testimoni.show', $testimonial->id) }}">
                                                 <button type="button" class="btn btn-primary m-1 ti ti-eye fs-4"></button>
                                             </a>
                                             <a href="{{ route('testimoni.edit', $testimonial->id) }}">
@@ -82,7 +82,7 @@
             <div class="col-sm-6 col-xl-3">
                 <div class="card overflow-hidden rounded-2">
                     <div class="position-relative">
-                        <a href="{{ route('updateproducts.edit', $product->id) }}"><img
+                        <a href="{{ route('updateproducts.show', $product->id) }}"><img
                                 src="{{ asset('storage/products/thumbnail/' . $product->thumbnail) }}"
                                 class="card-img-top rounded-0" style="object-fit: cover; width: 100%; height: 200px;"
                                 alt="..."></a>

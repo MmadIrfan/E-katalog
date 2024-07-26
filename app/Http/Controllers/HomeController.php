@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Home;
 use App\Models\Products;
 use App\Models\Blogs;
+use App\Models\Contact;
 use App\Models\About;
 use App\Models\Testimonials;
 use Illuminate\Http\Request;
@@ -40,8 +41,8 @@ class HomeController extends Controller
     public function contact()
     {
         $products = Products::all();
-        $blogs = Blogs::all();
-        return view("home.contact", ['products' => $products, 'blogs' => $blogs]);
+        $contact = Contact::first();
+        return view("home.contact", ['products' => $products, 'contact' => $contact]);
     }
     public function about()
     {

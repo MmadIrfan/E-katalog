@@ -26,7 +26,7 @@
                                 </div>
                             </article>
                         </div>
-                        <div style="display: flex; justify-content: flex-end; align-items: center;">
+                        <div class="text-end mt-3">
                             <a href="{{ route('updateblogs.edit', $blogs->id) }}">
                                 <button type="button" class="btn btn-primary m-1 ti ti-edit fs-4"></button>
                             </a>

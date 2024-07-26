@@ -53,25 +53,59 @@ class TestimonialsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Testimonials $testimonials)
+    public function show(Testimonials $testimonials, $id)
     {
-        //
+        $testimonials = Testimonials::findOrFail($id);
+        return view('admin.testimoni.showtestimoni', compact('testimonials'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Testimonials $testimonials)
+    public function edit(Testimonials $testimonials, $id)
     {
-        //
+        $testimonials = Testimonials::findOrFail($id);
+        return view('admin.testimoni.edittestimoni', compact('testimonials'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Testimonials $testimonials)
+    public function update(Request $request, Testimonials $testimonials, $id)
     {
-        //
+        $testimonials = Testimonials::find($id);
+        $request->validate([
+            'nama'      => 'required',
+            'foto'      => 'nullable|image|mimes:png,jpg,jpeg',
+            'pekerjaan' => 'required',
+            'testi'     => 'required',
+        ]);
+
+        if ($request->hasFile('foto')) {
+            // Delete old image
+            Storage::delete('public/profile/'.$testimonials->foto);
+
+            // Upload new image
+            $foto = $request->file('foto');
+            $foto->storeAs('public/profile', $foto->hashName());
+
+            // Update with new image
+            $testimonials->update([
+                'nama'      => $request->nama,
+                'foto'      => $foto->hashName(),
+                'pekerjaan' => $request->pekerjaan,
+                'testi'     => $request->testi,
+            ]);
+        } else {
+            // Update without changing the image
+            $testimonials->update([
+                'nama'      => $request->nama,
+                'pekerjaan' => $request->pekerjaan,
+                'testi'     => $request->testi,
+            ]);
+        }
+
+        return redirect()->route('dashboard')->with('success', 'Testimonial updated successfully.');
     }
 
     /**
