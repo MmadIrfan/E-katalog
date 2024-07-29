@@ -396,7 +396,7 @@ a.more {
 .we-help-section .imgs-grid {
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: (1fr) [27];
+    -ms-grid-columns: repeat(27, 1fr);
     grid-template-columns: repeat(27, 1fr);
     position: relative;
 }
@@ -644,6 +644,7 @@ a.more {
     -webkit-transition: 0.3s all ease;
     -o-transition: 0.3s all ease;
     transition: 0.3s all ease;
+    height: 250px;
 }
 .blog-section .post-entry .post-content-entry {
     padding-left: 15px;
@@ -1075,6 +1076,7 @@ textarea {
 /* galeri */
 .gallery-row img {
     transition: transform 0.3s ease;
+    height: 445px;
 }
 
 .gallery-row img:hover {

@@ -4,8 +4,8 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">
-                <a href="{{ route('updateproducts.create') }}"><button type="button" class="btn btn-primary m-1">Tambah
-                        Produk</button></a>
+                <a href="{{ route('updateproducts.create') }}"><button type="button" class="btn btn-primary m-1">Add
+                        Product</button></a>
                 <div class="table-responsive">
                     <table class="table text-nowrap mb-0 align-middle">
                         <thead class="text-dark fs-4">
