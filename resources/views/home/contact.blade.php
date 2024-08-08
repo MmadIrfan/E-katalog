@@ -1,9 +1,10 @@
 @extends('template.userpage')
 @section('title', 'Contact Us')
-@section('judul', 'Contact Us')
+@section('judul', 'Get in Touch with Us')
 @section('sub',
-    'We commit to delivering only The Best Rattan Furniture to you. Our products are made from Natural and
-    high-quality raw materials.')
+    'Have questions about our products or need assistance with your order? Reach out to us through the
+    following channels, and our team will be happy to assist you. For immediate assistance, use our live chat feature to
+    talk directly with our support team.')
 @section('content')
     <!-- Start Contact Form -->
     <div id="product-section" class="untree_co-section">

@@ -1,9 +1,9 @@
 @extends('template.userpage')
 @section('title', 'Products')
-@section('judul', 'Shop')
-@section('sub',
-    'We commit to delivering only The Best Rattan Furniture to you. Our products are made from Natural and
-    high-quality raw materials.')
+@section('judul', 'Explore Our Exclusive Range of Rattan Furniture')
+@section('sub', "Discover our diverse collection of rattan furniture, each piece meticulously crafted to bring elegance
+    and durability to your space. Whether you're looking for classic designs or contemporary styles, our products are
+    designed to meet your needs.")
 @section('content')
     <div id="product-section" class="untree_co-section product-section before-footer-section">
         <div class="container">

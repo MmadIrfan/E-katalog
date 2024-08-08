@@ -469,7 +469,7 @@ a.more {
     top: 8px;
 }
 
-.popular-product {
+/* .popular-product {
     padding: 0 0 7rem 0;
 }
 .popular-product .product-item-sm h3 {
@@ -512,7 +512,7 @@ a.more {
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     z-index: -1;
-}
+} */
 
 .testimonial-section {
     padding: 3rem 0 7rem 0;
@@ -1137,4 +1137,28 @@ textarea {
 
 .inactive-photo {
     opacity: 0.5;
+}
+
+/* popular product */
+.popular-products .card {
+    border: none;
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+
+.popular-products .card:hover {
+    transform: translateY(-5px);
+}
+
+.popular-products .card-img-top {
+    height: 220px;
+    object-fit: cover;
+}
+
+.transition-hover {
+    transition: all 0.3s ease;
+}
+
+.transition-hover:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }

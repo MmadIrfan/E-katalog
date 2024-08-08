@@ -1,6 +1,6 @@
 @extends('template.userpage')
 @section('title', 'Blogs')
-@section('judul', 'Blogs')
+@section('judul', 'Latest Insights and Inspiration')
 @section('sub', $blogs->judul)
 @section('content')
     <div id="product-section" class="untree_co-section product-section before-footer-section">

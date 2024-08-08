@@ -1,9 +1,9 @@
 @extends('template.userpage')
 @section('title', 'Blog')
-@section('judul', 'Blog')
-@section('sub',
-    'We commit to delivering only The Best Rattan Furniture to you. Our products are made from Natural and
-    high-quality raw materials.')
+@section('judul', 'Latest Insights and Inspirations')
+@section('sub', 'Welcome to our blog, where we share the latest trends in furniture design, tips for maintaining your
+    rattan pieces, and stories from our community. Dive into our articles to discover more about our products and the world
+    of rattan.')
 @section('content')
     <!-- Start Blog Section -->
     <div id="product-section" class="blog-section">

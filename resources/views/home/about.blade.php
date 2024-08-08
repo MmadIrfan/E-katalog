@@ -1,9 +1,8 @@
 @extends('template.userpage')
 @section('title', 'About Us')
-@section('judul', 'About Us')
-@section('sub',
-    'We commit to delivering only The Best Rattan Furniture to you. Our products are made from Natural and
-    high-quality raw materials.')
+@section('judul', 'Our Story and Commitment')
+@section('sub', 'At CV Aesthetic Rattan, we are dedicated to producing the finest rattan furniture. Our journey began in
+    Indonesia, where we harness the natural beauty and strength of rattan to create timeless pieces.')
 @section('content')
     <!-- Start About Us Section -->
     <section id="product-section" class="untree_co-section about-us-section before-footer-section">

@@ -166,27 +166,25 @@
     <!-- End We Help Section -->
 
     <!-- Start Popular Product -->
-    <div class="popular-product">
+    <div class="popular-products py-5">
         <div class="container">
-            <div class="row">
-                @foreach ($products->take(4) as $product)
-                    @if ($product->populer == 'Iya')
-                        <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
-                            <div class="product-item-sm d-flex">
-                                <div class="thumbnail">
-                                    <img src="{{ asset('storage/products/thumbnail/' . $product->thumbnail) }}"
-                                        alt="Image" class="img-fluid" />
-                                </div>
-                                <div class="pt-3">
-                                    <h3>{{ $product->nama }}</h3>
-                                    <p>
-                                        {{ substr($product->deskripsi, 0, 50) . '...' }}
-                                    </p>
-                                    <p><a href="{{ route('home.show', $product->id) }}">Read More</a></p>
-                                </div>
+            <h2 class="text-center section-title mb-5">Best Seller</h2>
+            <div class="row g-4">
+                @foreach ($products->where('populer', 'Iya')->take(4) as $product)
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <div class="card h-100 shadow-sm transition-hover">
+                            <img src="{{ asset('storage/products/thumbnail/' . $product->thumbnail) }}"
+                                alt="{{ $product->nama }}" class="card-img-top" />
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $product->nama }}</h5>
+                                <p class="card-text text-muted">
+                                    {{ Str::limit($product->deskripsi, 50) }}
+                                </p>
+                                <a href="{{ route('home.show', $product->id) }}"
+                                    class="btn btn-outline-primary stretched-link">Read More</a>
                             </div>
                         </div>
-                    @endif
+                    </div>
                 @endforeach
             </div>
         </div>
