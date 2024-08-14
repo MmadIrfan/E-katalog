@@ -69,7 +69,7 @@
                             @yield('sub')
                         </p>
                         <p>
-                            <a href="mailto:marketing@aestheticrattan.com?subject=Inquiry%20about%20Rattan%20Furniture&body=Hello,%0D%0AI%20am%20interested%20in%20learning%20more%20about%20your%20rattan%20furniture.%0D%0AThank%20you!"
+                            <a href="/products"
                                 class="btn btn-secondary me-2">Shop Now</a>
                             <a href="#product-section" class="btn btn-white-outline">Explore</a>
                         </p>
@@ -194,7 +194,7 @@
 
                         <div class="col-6 col-sm-6 col-md-3">
                             <ul class="list-unstyled">
-                                @foreach ($products->take(4) as $product)
+                                @foreach ($products->take(6) as $product)
                                     @if ($product->populer == 'Iya')
                                         <li><a href="{{ route('home.show', $product->id) }}">{{ $product->nama }}</a>
                                         </li>

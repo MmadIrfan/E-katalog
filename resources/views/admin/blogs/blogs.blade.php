@@ -32,7 +32,9 @@
                                 @foreach ($blogs as $blog)
                                     <tr class="text-center">
                                         <td class="border-bottom-2">
-                                            <h6 class="fw-semibold mb-0">{{ $loop->iteration }}</h6>
+                                            <h6 class="fw-semibold mb-0">
+                                                {{ $loop->iteration + ($blogs->currentPage() - 1) * $blogs->perPage() }}
+                                            </h6>
                                         </td>
                                         <td class="border-bottom-2">
                                             <p class="mb-0 fw-normal">{{ substr($blog->judul, 0, 50) . '...' }}</p>
@@ -63,6 +65,9 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <div class="mt-4 d-flex justify-content-center">
+                            {{ $blogs->links('pagination::bootstrap-4')->with('paginationSize', 'pagination-lg') }}
+                        </div>
                     </div>
                 </div>
             </div>

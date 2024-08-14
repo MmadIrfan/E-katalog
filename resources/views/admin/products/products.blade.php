@@ -34,7 +34,9 @@
                             @foreach ($products as $product)
                                 <tr class="text-center">
                                     <td class="border-bottom-2">
-                                        <h6 class="fw-semibold mb-0">{{ $loop->iteration }}</h6>
+                                        <h6 class="fw-semibold mb-0">
+                                            {{ $loop->iteration + ($products->currentPage() - 1) * $products->perPage() }}
+                                        </h6>
                                     </td>
                                     <td class="border-bottom-2">
                                         <img src="{{ asset('storage/products/thumbnail/' . $product->thumbnail) }}"
@@ -90,6 +92,9 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <div class="mt-4 d-flex justify-content-center">
+                        {{ $products->links('pagination::bootstrap-4')->with('paginationSize', 'pagination-lg') }}
+                    </div>
                 </div>
             </div>
         </div>
