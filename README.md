@@ -1,66 +1,370 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# E-Katalog
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplikasi E-Katalog berbasis web menggunakan Laravel untuk mengelola dan menampilkan katalog produk secara digital.
 
-## About Laravel
+## 📋 Deskripsi
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+E-Katalog adalah sistem manajemen katalog produk yang komprehensif dengan fitur lengkap untuk menampilkan dan mengelola produk secara online. Aplikasi ini memiliki dua sisi utama: halaman publik untuk pengunjung dan dashboard admin untuk pengelolaan konten. Dibangun dengan Laravel dan dilengkapi dengan interface yang modern menggunakan Tailwind CSS.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🚀 Fitur
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 🔐 Dashboard Admin
+- **Manajemen Produk** - CRUD produk dengan kategori dan gambar
+- **Manajemen Testimonial** - Kelola review dan testimoni pelanggan
+- **Manajemen Blog** - Buat dan publikasikan artikel blog
+- **Manajemen About** - Update informasi tentang perusahaan
+- **Manajemen Contact** - Lihat dan balas pesan dari pengunjung
+- **Live Chat Management** - Monitor dan respond chat dari pengunjung
+- **Dashboard Analytics** - Statistik dan laporan
 
-## Learning Laravel
+### 🌐 Halaman Publik
+- **Home** 
+  - Popular Section - Produk yang paling diminati
+  - Best Seller Section - Produk terlaris
+  - Hero section dan call-to-action
+- **Products** - Katalog lengkap dengan filter kategori
+- **About Us** - Informasi lengkap tentang perusahaan
+- **Blog** - Artikel dan konten informatif
+- **Contact Us** - Form kontak dan informasi kontak
+- **Live Chat** - Fitur chat real-time dengan admin
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### ✨ Fitur Umum
+- Responsive design untuk semua device
+- SEO friendly
+- Fast loading dengan optimasi assets
+- User authentication & authorization
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## 📸 Screenshot
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Halaman Publik
+*(Tambahkan screenshot halaman home, products, blog, dll)*
 
-## Laravel Sponsors
+### Dashboard Admin
+*(Tambahkan screenshot dashboard admin, manage products, dll)*
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 🛠️ Teknologi yang Digunakan
 
-### Premium Partners
+- **Framework**: Laravel 9.x/10.x
+- **Frontend**: 
+  - Tailwind CSS
+  - Blade Templates
+  - JavaScript/Alpine.js
+- **Database**: MySQL
+- **Build Tool**: Vite
+- **Live Chat**: WebSocket/Pusher atau Laravel Echo (sesuaikan)
+- **Rich Text Editor**: TinyMCE/CKEditor (untuk blog)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## 📦 Persyaratan Sistem
 
-## Contributing
+- PHP >= 8.0
+- Composer
+- Node.js & NPM
+- MySQL/MariaDB
+- Web Server (Apache/Nginx)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 🔧 Instalasi
 
-## Code of Conduct
+### 1. Clone Repository
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+git clone https://github.com/MmadIrfan/E-katalog.git
+cd E-katalog
+```
 
-## Security Vulnerabilities
+### 2. Install Dependencies PHP
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+composer install
+```
 
-## License
+### 3. Install Dependencies JavaScript
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+npm install
+```
+
+### 4. Konfigurasi Environment
+
+```bash
+cp .env.example .env
+```
+
+Edit file `.env` dan sesuaikan konfigurasi database:
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=ekatalog
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+### 5. Generate Application Key
+
+```bash
+php artisan key:generate
+```
+
+### 6. Jalankan Migrasi Database
+
+```bash
+php artisan migrate
+```
+
+### 7. Jalankan Seeder (Opsional)
+
+Jika terdapat data awal:
+
+```bash
+php artisan db:seed
+```
+
+### 8. Buat Storage Link
+
+```bash
+php artisan storage:link
+```
+
+### 9. Setup Live Chat (Opsional)
+
+Jika menggunakan WebSocket untuk live chat:
+
+```bash
+# Install Laravel WebSockets (contoh)
+composer require beyondcode/laravel-websockets
+
+# Publish config
+php artisan vendor:publish --provider="BeyondCode\LaravelWebSockets\WebSocketsServiceProvider"
+
+# Migrate
+php artisan migrate
+```
+
+### 10. Build Assets
+
+**Untuk Development:**
+```bash
+npm run dev
+```
+
+**Untuk Production:**
+```bash
+npm run build
+```
+
+### 11. Jalankan Aplikasi
+
+```bash
+php artisan serve
+```
+
+Aplikasi akan berjalan di `http://localhost:8000`
+
+**Untuk Live Chat (jika menggunakan WebSocket):**
+```bash
+# Terminal terpisah
+php artisan websockets:serve
+```
+
+## 🔐 Akun Default (Admin)
+
+Setelah menjalankan seeder, gunakan akun berikut untuk login ke dashboard admin:
+
+```
+URL Admin: http://localhost:8000/admin
+Email: admin@ekatalog.com
+Password: password
+```
+
+**Catatan:** Segera ubah password default setelah login pertama kali untuk keamanan.
+
+*(Sesuaikan dengan konfigurasi seeder Anda)*
+
+## 📁 Struktur Folder
+
+```
+E-katalog/
+├── app/                    # Logic aplikasi
+│   ├── Http/
+│   │   ├── Controllers/   # Controllers untuk admin & public
+│   │   ├── Middleware/
+│   │   └── Requests/
+│   ├── Models/            # Model: Product, Blog, Testimonial, etc.
+│   └── Services/          # Business logic
+├── config/                # File konfigurasi
+├── database/              # Database
+│   ├── migrations/        # Schema database
+│   └── seeders/           # Data awal
+├── public/                # Assets publik
+│   ├── css/
+│   ├── js/
+│   └── images/           # Uploaded images
+├── resources/             # Views dan assets
+│   ├── css/              # Tailwind CSS
+│   ├── js/               # JavaScript files
+│   └── views/
+│       ├── admin/        # Admin dashboard views
+│       ├── public/       # Public pages views
+│       └── layouts/      # Layout templates
+├── routes/                # Routing
+│   ├── web.php           # Web routes
+│   └── api.php           # API routes (jika ada)
+└── storage/               # File storage
+    ├── app/
+    │   └── public/       # Public uploads
+    └── logs/
+```
+
+## 🎨 Penggunaan
+
+### Untuk Admin
+
+#### Dashboard
+1. Login ke dashboard admin di `/admin` atau `/login`
+2. Lihat statistik dan overview aplikasi
+
+#### Mengelola Produk
+1. Navigasi ke menu "Products"
+2. Klik "Tambah Produk" untuk produk baru
+3. Isi form: nama, deskripsi, harga, kategori
+4. Upload gambar produk
+5. Set sebagai "Popular" atau "Best Seller" jika perlu
+6. Simpan
+
+#### Mengelola Testimonial
+1. Buka menu "Testimonials"
+2. Tambah testimoni baru atau edit yang ada
+3. Isi nama pelanggan, foto, dan review
+4. Set status aktif/tidak aktif
+5. Simpan
+
+#### Mengelola Blog
+1. Akses menu "Blogs"
+2. Klik "Buat Artikel Baru"
+3. Tulis judul, konten, dan upload gambar featured
+4. Set kategori dan tags
+5. Publish atau simpan sebagai draft
+
+#### Mengelola About Us
+1. Buka menu "About"
+2. Edit konten tentang perusahaan
+3. Upload gambar dan update informasi
+4. Simpan perubahan
+
+#### Mengelola Contact
+1. Menu "Contact" untuk melihat pesan masuk
+2. Baca dan balas pesan dari pengunjung
+3. Set status pesan (dibaca/belum)
+
+#### Live Chat Management
+1. Buka menu "Chats"
+2. Lihat daftar chat aktif
+3. Klik untuk membuka dan membalas chat
+4. Tutup chat yang sudah selesai
+
+### Untuk Pengunjung
+
+#### Menjelajah Produk
+1. Kunjungi halaman "Products"
+2. Gunakan filter kategori atau search
+3. Klik produk untuk detail lengkap
+
+#### Menghubungi
+1. Buka halaman "Contact Us"
+2. Isi form dengan nama, email, dan pesan
+3. Submit form
+4. Atau gunakan Live Chat untuk respons cepat
+
+#### Membaca Blog
+1. Navigasi ke halaman "Blog"
+2. Browse artikel yang tersedia
+3. Klik untuk membaca artikel lengkap
+
+## 🐛 Troubleshooting
+
+### Error 500 - Internal Server Error
+
+```bash
+# Clear cache
+php artisan config:clear
+php artisan cache:clear
+php artisan view:clear
+php artisan route:clear
+
+# Set permissions
+chmod -R 775 storage
+chmod -R 775 bootstrap/cache
+```
+
+### Assets tidak muncul
+
+```bash
+# Rebuild assets
+npm run build
+
+# Pastikan storage link sudah dibuat
+php artisan storage:link
+```
+
+### Database connection error
+
+- Pastikan MySQL/MariaDB sudah running
+- Cek konfigurasi di file `.env`
+- Pastikan database sudah dibuat
+
+### Live Chat tidak berfungsi
+
+```bash
+# Pastikan WebSocket server running
+php artisan websockets:serve
+
+# Clear config
+php artisan config:clear
+
+# Cek di browser console untuk error JavaScript
+```
+
+## ❓ FAQ
+
+**Q: Bagaimana cara mengubah logo dan branding?**  
+A: Upload logo baru di dashboard admin > Settings, atau edit langsung di `public/images/`
+
+**Q: Bagaimana cara menambah kategori produk?**  
+A: Login ke admin dashboard, menu Products > Categories > Add New
+
+**Q: Apakah support multiple bahasa?**  
+A: Saat ini belum support multi-language, bisa dikembangkan menggunakan Laravel localization
+
+**Q: Bagaimana cara backup database?**  
+A: Gunakan command `php artisan backup:run` atau export manual via phpMyAdmin
+
+**Q: Live chat realtime atau tidak?**  
+A: Ya, menggunakan WebSocket untuk komunikasi realtime antara admin dan pengunjung
+
+## 🤝 Kontribusi
+
+Kontribusi selalu diterima! Silakan:
+
+1. Fork repository ini
+2. Buat branch fitur baru (`git checkout -b fitur-baru`)
+3. Commit perubahan (`git commit -m 'Menambah fitur baru'`)
+4. Push ke branch (`git push origin fitur-baru`)
+5. Buat Pull Request
+
+## 📝 Lisensi
+
+Project ini menggunakan lisensi MIT. Lihat file `LICENSE` untuk detail.
+
+## 👨‍💻 Developer
+
+**Muhammad Irfan**
+- GitHub: [@MmadIrfan](https://github.com/MmadIrfan)
+
+## 📞 Kontak
+
+Jika ada pertanyaan atau saran, silakan buat issue di repository ini atau hubungi developer.
+
+---
+
+⭐ Jangan lupa beri star jika project ini membantu!
