@@ -172,9 +172,9 @@ php artisan websockets:serve
 Setelah menjalankan seeder, gunakan akun berikut untuk login ke dashboard admin:
 
 ```
-URL Admin: http://localhost:8000/admin
-Email: admin@ekatalog.com
-Password: password
+URL Admin: http://localhost:8000/aestheticrattanadminlogin
+Email: test@example.com
+Password: test12345
 ```
 
 **Catatan:** Segera ubah password default setelah login pertama kali untuk keamanan.
